@@ -1,0 +1,20 @@
+
+:root {
+  --main-color: #fb98cf;
+}
+
+.ui.inverted.menu .pink.active.item, .ui.inverted.pink.menu {
+  background-color: var(--main-color);
+}
+
+.ui.inverted.pink.segment {
+  background-color: var(--main-color) !important;
+}
+
+.ui.pink.button, .ui.pink.buttons .button {
+  background-color: var(--main-color);
+}
+
+i.pink.icon {
+  color: var(--main-color) !important;
+}

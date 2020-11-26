@@ -1,0 +1,29 @@
+.page-categories .ui.card {
+  direction: rtl;
+}
+
+.redux-toastr .toastr .rrt-middle-container {
+  text-align: right;
+  direction: rtl;
+}
+
+.cart-summary {
+  direction: rtl;
+}
+
+.cart-summary .ui.left.aligned.header {
+  text-align: right;
+  direction: rtl;
+}
+
+.footer {
+  direction: rtl;
+}
+
+.products-list-header {
+  direction: rtl;
+}
+
+.categories-list {
+  direction: rtl;
+}
