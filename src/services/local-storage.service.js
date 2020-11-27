@@ -1,22 +1,18 @@
 import _ from 'lodash';
 
-if (typeof window !== 'undefined') {
-  localStorage.setItem('myCat', 'Tom');
-}
-
 export const storage = {
   setItem: (key, value) => {
-    if (typeof window !== 'undefined') {
+    if (typeof localStorage !== 'undefined') {
       localStorage.setItem(key, value);
     }
   },
   getItem: (key) => {
-    if (typeof window !== 'undefined') {
-      localStorage.getItem(key);
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem(key);
     }
   },
   removeItem: (key) => {
-    if (typeof window !== 'undefined') {
+    if (typeof localStorage !== 'undefined') {
       localStorage.removeItem(key);
     }
   }

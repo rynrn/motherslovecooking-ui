@@ -3,6 +3,10 @@
   width: 90% !important;
 }
 
+.cart-summary {
+  background: var(--secondary-color) !important;
+}
+
 .cart-product .content {
   padding-top: 2em !important;
 }

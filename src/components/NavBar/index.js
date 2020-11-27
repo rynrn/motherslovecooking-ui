@@ -3,18 +3,22 @@ import { Link, Redirect, useStaticQuery, graphql } from "gatsby"
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { Segment, Icon, Label, Menu, Image } from 'semantic-ui-react';
+import { useCart } from "../../context/cart"
 import './NavBar.css';
 
-const cart = [];
-const getQuantity = () => 99
+const getCartItems = (products) => {
+  let count = 0;
+  for (const index in products) {
+    const product = products[index];
+    count += product.quantity;
+  }
+  return count;
+}
 
 const NavBar = ({ title, openMenu }) => {
+  const [cart] = useCart(false);
   const [isSearchVisible] = useState(false);
   const [toSearchPage] = useState(false);
-
-  // function handleSubmit(e) {
-  //   console.log('e: ', e);
-  // }
 
   const data = useStaticQuery(graphql`
     query {
@@ -76,7 +80,7 @@ const NavBar = ({ title, openMenu }) => {
                     size="mini"
                     floating
                     circular
-                    content={getQuantity()}
+                    content={getCartItems(cart.products)}
                     className="cart-counter"
                   />
                 )}
@@ -95,7 +99,7 @@ const NavBar = ({ title, openMenu }) => {
           <Icon name="content" size="large" onClick={openMenu} className="hamburger shop-icon" />
         </Menu.Item>
       </Menu>
-      {toSearchPage !== false && isSearchVisible ? <Redirect to={`/search/${toSearchPage}`} /> : null}
+      {/* {toSearchPage !== false && isSearchVisible ? <Redirect to={`/search/${toSearchPage}`} /> : null} */}
     </Segment>
   );
 }

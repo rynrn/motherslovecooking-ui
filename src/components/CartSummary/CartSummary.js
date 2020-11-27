@@ -7,7 +7,7 @@ const CartSummary = ({ total, minimumTotal, currency, orderCheckout }) => {
   return (
     <Card centered className="cart-summary">
       <Card.Content>
-        <Card.Header as={Header} textAlign="left">
+        <Card.Header as="h2" textAlign="right">
           סיכום הזמנה
         </Card.Header>
         <Grid doubling>

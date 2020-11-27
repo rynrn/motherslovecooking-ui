@@ -7,7 +7,6 @@ import Layout from "../components/Layout/Layout"
 const ProductPage = ({ data }) => {
   return (
     <Layout>
-      <Header textAlign="center" className="products-list-header">{data.product.name}</Header>
       <ProductDetails key={data.product.wordpress_id} {...data.product} id={data.product.wordpress_id} />
     </Layout>
   );
@@ -23,8 +22,27 @@ export const query = graphql`
       backorders_allowed
       stock_status
       description
+      categories {
+        wordpress_id
+        name
+      }
       images {
         src
+      }
+      related_products {
+        wordpress_id
+        name
+        price
+        backorders_allowed
+        stock_status
+        description
+        categories {
+          wordpress_id
+          name
+        }
+        images {
+          src
+        }
       }
     }
   }

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import ReduxToastr from 'react-redux-toastr';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Sidebar } from 'semantic-ui-react';
 import { withRouter } from 'react-router';
-
 import { isMenuVisible } from './components/NavBar/reducer';
 import { closeMenu } from './components/NavBar/actions';
 import NavBar from './components/NavBar';
@@ -28,14 +26,6 @@ class App extends Component {
   render() {
     return (
       <div style={{ height: '100%' }}>
-        <ReduxToastr
-          timeOut={4000}
-          newestOnTop
-          preventDuplicates
-          position="bottom-center"
-          transitionIn="fadeIn"
-          transitionOut="fadeOut"
-        />
         <Sidebar.Pushable>
           <SideMenu isVisible={this.props.sideMenuVisible} closeMenu={this.props.closeMenu} />
           <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>

@@ -1,0 +1,23 @@
+.breadcrumbs {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 0;
+  display: flex;
+  color: #737373;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.breadcrumbs a, .breadcrumbs span {
+  color: inherit;
+}
+
+.breadcrumbs a:first-child {
+  padding-right: 0px;
+}
+
+.breadcrumbs span {
+  color: #999;
+}

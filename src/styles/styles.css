@@ -55,22 +55,14 @@
   border-radius: 25px;
 }
 
-.wrapper-button-add-to-cart {
-  direction: ltr;
-  text-align: center;
-}
-
-.wrapper-button-add-to-cart .ui.positive.button {
-  background-color: var(--main-color);
-}
-
-.wrapper-button-add-to-cart .ui.negative.button {
-  background-color: var(--secondary-color);
-  color: #616161;
-}
-
 .products-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.pushable .ui.card:first-child {
+  margin: 1em 0;
+  margin-left: auto;
+  margin-right: auto;
 }

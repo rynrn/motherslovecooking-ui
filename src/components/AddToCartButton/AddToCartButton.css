@@ -1,0 +1,24 @@
+.add-to-cart {
+  direction: ltr;
+}
+
+.add-to-cart.right {
+  text-align: right;
+}
+
+.add-to-cart.left {
+  text-align: left;
+}
+
+.add-to-cart.center {
+  text-align: center;
+}
+
+.add-to-cart .ui.positive.button {
+  background-color: var(--main-color);
+}
+
+.add-to-cart .ui.negative.button {
+  background-color: var(--secondary-color);
+  color: #616161;
+}

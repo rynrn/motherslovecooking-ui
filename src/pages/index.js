@@ -5,7 +5,6 @@ import ImageGallery from 'react-image-gallery';
 import ImageGridColumnCard from '../components/ImageCard/ImageGridColumnCard';
 import ImageCard from '../components/ImageCard/ImageCard';
 import Title from '../components/Title/Title';
-import { hotDishes, customersRecommendations } from '../data';
 import Layout from "../components/Layout/Layout"
 import '../utils/image-util';
 // import SEO from "../components/seo"
@@ -62,8 +61,6 @@ const IndexPage = () => {
     })
   }
 
-  console.log('//data.deals//', data)
-
   return (
     <Layout>
       {/* <SEO title="Home" /> */}
@@ -108,18 +105,18 @@ const IndexPage = () => {
           <Divider hidden />
           <Grid className="text-center">
             <Grid.Row columns={3}>
-              <ImageGridColumnCard text={'עיקריות'} data={data.fish.childImageSharp.fixed} />
-              <ImageGridColumnCard text={'מיוחדים'} data={data.wine.childImageSharp.fixed} />
-              <ImageGridColumnCard text={'תוספות'} data={data.pasta.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'עיקריות'} to="/category/21" data={data.fish.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'מיוחדים'} to="/category/15" data={data.wine.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'תוספות'} to="/category/17" data={data.pasta.childImageSharp.fixed} />
             </Grid.Row>
             <Grid.Row columns={3}>
-              <ImageGridColumnCard text={'סלטים'} data={data.salat.childImageSharp.fixed} />
-              <ImageGridColumnCard text={'מרקים'} data={data.soup.childImageSharp.fixed} />
-              <ImageGridColumnCard text={'קינוחים'} data={data.dessert.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'סלטים'} to="/category/27" data={data.salat.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'מרקים'} to="/category/23" data={data.soup.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'קינוחים'} to="/category/28" data={data.dessert.childImageSharp.fixed} />
             </Grid.Row>
           </Grid>
           <Divider hidden />
-          <ImageCard data={data.delivery.childImageSharp.fixed} text='להזמנות' />
+          <ImageCard to="/products" data={data.delivery.childImageSharp.fixed} text='להזמנות' />
           <Divider />
           <Title text="איזורי משלוח" subtext="Delivery zones" />
           <Grid className="text-center">
@@ -135,9 +132,9 @@ const IndexPage = () => {
           <Divider hidden />
           <Title text="שאלות נפוצות" subtext="Questions" />
           <Divider />
-          <ImageCard data={data.deals.childImageSharp.fixed} text='מבצעים ודילים' />
+          <ImageCard to="/category/29" data={data.deals.childImageSharp.fixed} text='מבצעים ודילים' />
           <Divider hidden />
-          <Title text="המנות הכי חמות" subtext="The hottest dishes" />
+          {/* <Title text="המנות הכי חמות" subtext="The hottest dishes" />
           <Divider hidden />
           <ImageGallery items={hotDishes}
             isRTL={true}
@@ -153,7 +150,7 @@ const IndexPage = () => {
             showThumbnails={false}
             showFullscreenButton={false}
             showPlayButton={false} />
-          <Divider hidden />
+          <Divider hidden /> */}
         </Container>
       </div>
     </Layout>

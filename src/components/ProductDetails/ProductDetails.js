@@ -1,26 +1,26 @@
 import React from 'react';
 import _ from 'lodash';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import { useStaticQuery, graphql } from 'gatsby';
-import { Header, Card, Icon, Button } from 'semantic-ui-react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import { Divider } from 'semantic-ui-react';
 import ImageGallery from 'react-image-gallery';
-// import Rating from '../../components/Rating';
-// import Reviews from '../../components/Reviews';
-// import Variations from '../../components/Variations';
-// import SocialBox from '../SocialBox';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
+import ProductCard from '../ProductCard/ProductCard';
 import '../../utils/image-util';
+import { getQuantity, getProductImage, getProductImages } from '../../utils/products-util';
 import { useCart } from '../../context/cart';
 
-// variationId
-
-const ProductDetails = ({ name, price, images, id, backorders_allowed, stock_status, description }) => {
-  const [, dispatch] = useCart();
+const ProductDetails = ({ name, price, images, id,
+  related_products = [], description, categories = [] }) => {
+  const [cart, dispatch] = useCart();
 
   const data = useStaticQuery(graphql`
     query ProductDetailsQuery {
       site {
         siteMetadata {
           currency
+          title
         }
       }
       placeholder: file(relativePath: { eq: "placeholder-image.jpg" }) {
@@ -29,8 +29,19 @@ const ProductDetails = ({ name, price, images, id, backorders_allowed, stock_sta
     }
   `);
 
-  let _images = _.isEmpty(images) ? [data.placeholder.childImageSharp.fixed.src] : images;
-  _images = _.map(_images, img => ({ original: _.isString(img) ? img : img.src }));
+  const breadcrumbsItems = [
+    {
+      to: '/',
+      name: data.site.siteMetadata.title
+    },
+    {
+      to: '/products',
+      name: 'מוצרים'
+    },
+    {
+      name: name
+    }
+  ];
 
   let isOnLine = true;
   if (typeof window !== 'undefined') {
@@ -39,58 +50,77 @@ const ProductDetails = ({ name, price, images, id, backorders_allowed, stock_sta
 
   return (
     <div className="view-component product-details">
-      <Card centered>
-        <ImageGallery
-          items={_images}
-          slideDuration={550}
-          showPlayButton={false}
-          showThumbnails={false}
-          showNav={isOnLine}
-          disableSwipe={!isOnLine}
-        />
-        {/* {this.props.product.rating_count > 0 ? (
-          <Card.Content extra>
-            <Rating
-              rating={Math.round(Number(this.props.product.average_rating))}
-              ratingCount={this.props.product.rating_count}
-            />
-          </Card.Content>
-        ) : null} */}
-        {/* {this.props.product.categories.length === 0 ? null : (
-          <Card.Content>{this.getCategories()}</Card.Content>
-        )} */}
-        {/* <Card.Content>{stock_status === 'instock' ? 'במלאי' : 'נגמר המלאי'}</Card.Content> */}
-        {price ?
-          (<Card.Content>
-            <div dangerouslySetInnerHTML={{ __html: data.site.siteMetadata.currency + price }} />
-          </Card.Content>) : null}
-        {/* {this.props.product.variations.length === 0 ? null : (
-        <Variations
-          sendSelections={this.receiveSelections}
-          productId={this.props.product.id}
-          variationIds={this.props.product.variations}
-        />
-      )} */}
-        {backorders_allowed || stock_status === 'instock' ? (
-          <Button color="pink" fluid onClick={() => dispatch({ type: 'add', productId: id, price, name })}>
-            הוספה לסל &nbsp;<Icon name="cart" />
-          </Button>
-        ) : null}
-      </Card>
-      {_.size(description) > 0 &&
-        <Card centered>
-          <Card.Content>
-            <Card.Header as={Header} size="tiny">
-              תיאור
-          </Card.Header>
-            <Card.Description>
-              <div dangerouslySetInnerHTML={{ __html: description }} />
-            </Card.Description>
-          </Card.Content>
-        </Card>
-      }
-      {/* <Reviews productId={id} /> */}
-      {/* <SocialBox permalink={this.props.product.permalink} /> */}
+      <div className="product-details__breadcrumbs">
+        <Breadcrumbs items={breadcrumbsItems} />
+      </div>
+      <div className="product-details__details-wrapper">
+        <div className="product-details__image-galery">
+          <ImageGallery
+            items={getProductImages(images, data.placeholder.childImageSharp.fixed.src)}
+            slideDuration={550}
+            showPlayButton={false}
+            showThumbnails={false}
+            showNav={isOnLine}
+            disableSwipe={!isOnLine}
+          />
+        </div>
+        <div className="product-details__content">
+          <h1 className="product-details__header">{name}</h1>
+          <div className="product-details__description" dangerouslySetInnerHTML={{ __html: description }} />
+          <Divider />
+
+          <div className="product-details__price">
+            <span>מחיר: </span>
+            <span dangerouslySetInnerHTML={{ __html: data.site.siteMetadata.currency + price }} />
+          </div>
+
+          <AddToCartButton right quantity={getQuantity(cart, id)}
+            add={() => dispatch({ type: 'add', productId: id, name, price: price })}
+            decrement={() => dispatch({ type: 'decrement', productId: id, decreasLimit: 0 })} />
+
+          <Divider />
+
+          <h2>קטגוריות</h2>
+
+          <ul className="product-details__meta">
+            {categories.map(({ name, wordpress_id }) => <li key={wordpress_id}>
+              <Link to={`/category/${wordpress_id}`}>{name}</Link>
+            </li>)}
+          </ul>
+        </div>
+      </div>
+
+      <Divider hidden />
+
+      <Divider />
+
+      <h2>
+        <span> אנשים שהזמינו </span>
+        <span> {name} </span>
+        <span> הזמינו גם: </span>
+      </h2>
+
+      <Divider hidden />
+
+      <div className="products-grid">
+        {
+          related_products.map(relatedProduct => {
+            console.log('relatedProduct : ', relatedProduct)
+            return (
+              <ProductCard {...relatedProduct}
+                key={relatedProduct.wordpress_id}
+                currency={data.site.siteMetadata.currency}
+                quantity={getQuantity(cart, relatedProduct.wordpress_id)}
+                src={getProductImage(relatedProduct.images, data.placeholder.childImageSharp.fixed.src)}
+                add={() => dispatch({ type: 'add', productId: relatedProduct.wordpress_id, name: relatedProduct.name, price: relatedProduct.price })}
+                decrement={() => dispatch({ type: 'decrement', productId: relatedProduct.wordpress_id, decreasLimit: 0 })} />
+            );
+          })
+        }
+
+        <Divider hidden />
+
+      </div>
     </div >
   );
 }

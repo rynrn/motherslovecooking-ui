@@ -1,9 +1,10 @@
 import React from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Divider } from 'semantic-ui-react';
 
 const Checkout = ({ orderCheckout }) => {
   return (
     <Form>
+      <Divider hidden />
       <Button color="pink" fluid onClick={() => orderCheckout()}>
         תשלום
       </Button>

@@ -2,6 +2,8 @@
 :root {
   --main-color: #fb98cf;
   --secondary-color: #ffdbef;
+  --text-regular-color: #3d464d;
+  --text-light-color: #9c9d9e;
 }
 
 .ui.inverted.menu .pink.active.item, .ui.inverted.pink.menu {

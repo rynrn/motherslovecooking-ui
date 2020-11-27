@@ -1,9 +1,10 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Header } from 'semantic-ui-react';
+import { Header, Divider } from 'semantic-ui-react';
 import Layout from "../components/Layout/Layout"
 import CartProductContainer from "../containers/CartProductContainer/CartProductContainer"
 import CartSummaryContainer from "../containers/CartSummaryContainer/CartSummaryContainer"
+import '../utils/image-util';
 
 const CartPage = () => {
   const data = useStaticQuery(graphql`
@@ -13,13 +14,17 @@ const CartPage = () => {
           currency
         }
       }
+      placeholder: file(relativePath: { eq: "placeholder-image.jpg" }) {
+        ...squareImage
+      }
     }
   `)
   return (
     <Layout>
-      <Header textAlign="center">עגלת קניות</Header>
-      <CartProductContainer currency={data.site.siteMetadata.currency} />
+      <Header as="h1" textAlign="center">עגלת קניות</Header>
+      <CartProductContainer placeholder={data.placeholder} currency={data.site.siteMetadata.currency} />
       <CartSummaryContainer currency={data.site.siteMetadata.currency} />
+      <Divider hidden />
     </Layout>
   );
 }

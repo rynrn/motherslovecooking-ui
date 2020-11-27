@@ -3,9 +3,8 @@ import _ from "lodash"
 import { useStaticQuery, graphql } from 'gatsby';
 import ProductCard from "../../components/ProductCard/ProductCard"
 import { useCart } from "../../context/cart"
+import { getProductImage, getQuantity } from '../../utils/products-util';
 import '../../utils/image-util';
-
-
 
 const ProductCardContainer = (props) => {
   const [cart, dispatch] = useCart();
@@ -22,22 +21,11 @@ const ProductCardContainer = (props) => {
     }
   `)
 
-  let src = _.head(props.images);
-  src = _.isEmpty(src) ? data.placeholder.childImageSharp.fixed.src : src.src;
-
-  const getQuantity = () => {
-    let quantity = 0;
-    if (!!cart.products[props.id]) {
-      quantity = cart.products[props.id].quantity;
-    }
-    return quantity;
-  }
-
   return (
     <ProductCard {...props}
       currency={data.site.siteMetadata.currency}
-      quantity={getQuantity()}
-      src={src}
+      quantity={getQuantity(cart, props.id)}
+      src={getProductImage(props.images, data.placeholder.childImageSharp.fixed.src)}
       add={() => dispatch({ type: 'add', productId: props.id, name: props.name, price: props.price })}
       decrement={() => dispatch({ type: 'decrement', productId: props.id, decreasLimit: 0 })} />
   );

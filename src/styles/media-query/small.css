@@ -1,0 +1,18 @@
+@media (max-width: 576px) {
+  .product-details__details-wrapper {
+    flex-direction: column;
+  }
+
+  .product-details__image-galery,
+  .product-details__content {
+    width: 100%;
+  }
+
+  /* components */
+
+  /* breadcrumbs */
+  .breadcrumbs {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
