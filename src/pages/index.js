@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Divider, Grid, Container } from 'semantic-ui-react';
 import ImageGallery from 'react-image-gallery';
 import ImageGridColumnCard from '../components/ImageCard/ImageGridColumnCard';
 import Story from '../components/Story/Story';
+import StoryAvatar from '../components/StoryAvatar/StoryAvatar';
 import ImageCard from '../components/ImageCard/ImageCard';
 import Title from '../components/Title/Title';
 import Layout from "../components/Layout/Layout"
@@ -11,6 +12,7 @@ import '../utils/image-util';
 // import SEO from "../components/seo"
 
 const IndexPage = () => {
+  const [currentStory, setCurrentStory] = useState('');
   const data = useStaticQuery(graphql`
     query IndexPageQuery {
       hero1: file(relativePath: { eq: "shutterstock_757818340.jpg" }) {
@@ -224,26 +226,24 @@ const IndexPage = () => {
           <Divider hidden />
           <div className="wrapper-stories-items">
             <div className="stories-items">
-              <Story stories={hotDishes}
+              <StoryAvatar oepn={() => setCurrentStory('hotDishes')}
+                stories={hotDishes}
                 avatar={data.avatar_rec_image.childImageSharp.fixed}
                 text="המנות הכי מבוקשות" />
-              <Story stories={thanks}
+              <StoryAvatar oepn={() => setCurrentStory('thanks')}
+                stories={thanks}
                 avatar={data.avatar_thank_image.childImageSharp.fixed}
                 text="לקוחות ממליצים עלינו" />
-              <Story stories={loveFood}
+              <StoryAvatar oepn={() => setCurrentStory('loveFood')}
+                stories={loveFood}
                 avatar={data.avatar_love_food_image.childImageSharp.fixed}
                 text="לאנשים שמבינים באוכל" />
             </div>
           </div>
+          {currentStory === 'hotDishes' && <Story close={() => setCurrentStory('')} stories={hotDishes} />}
+          {currentStory === 'thanks' && <Story close={() => setCurrentStory('')} stories={hotDishes} />}
+          {currentStory === 'loveFood' && <Story close={() => setCurrentStory('')} stories={hotDishes} />}
           <Divider hidden />
-          {/* <Title text="לקוחות ממליצים" subtext="Customers recommend" />
-          <ImageGallery items={customersRecommendations}
-            isRTL={true}
-            sizes="(min-width: 400px) 400px, 100vw"
-            showThumbnails={false}
-            showFullscreenButton={false}
-            showPlayButton={false} />
-          <Divider hidden /> */}
         </Container>
       </div>
     </Layout>

@@ -13,6 +13,7 @@
 @import '../components/CartProduct/CartProduct.css';
 @import '../components/ProductCard/ProductCard.css';
 @import '../components/Story/Story.css';
+@import '../components/StoryAvatar/StoryAvatar.css';
 
 /* override */
 @import './rtl.css';

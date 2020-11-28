@@ -20,3 +20,17 @@ export const closeFullscreen = () => {
     }
   }
 }
+
+export const screenWidth = () => {
+  if (typeof window !== 'undefined') {
+    return window.innerWidth;
+  }
+  return 0;
+}
+
+export const screenHeight = () => {
+  if (typeof window !== 'undefined') {
+    return window.innerHeight
+  }
+  return 0;
+}
