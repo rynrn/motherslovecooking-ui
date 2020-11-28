@@ -1,12 +1,17 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://motherslovecooking.co.il`,
     title: `מאמא באהבה`,
     description: `בישול ביתי הכי טעים שיש, מכל הסוגים. בשרים בבישול ארוך, סלטים, צמחוני, תוספות ואפילו קינוחים`,
-    author: `@riki_avisror`,
+    author: `ריקי אביסרור`,
+    keywords: `בישול ביתי, משלוחים של אוכל עד הבית, ריקי אביסרור, מאמא באהבה, מבשלת אוכל טוב משלוחים`,
+    authorRef: `@riki_avisror`,
     currency: `₪`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

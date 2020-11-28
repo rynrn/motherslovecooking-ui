@@ -6,10 +6,35 @@ import ImageGridColumnCard from '../components/ImageCard/ImageGridColumnCard';
 import Story from '../components/Story/Story';
 import StoryAvatar from '../components/StoryAvatar/StoryAvatar';
 import ImageCard from '../components/ImageCard/ImageCard';
+import SEO from '../components/seo';
 import Title from '../components/Title/Title';
 import Layout from "../components/Layout/Layout"
 import '../utils/image-util';
-// import SEO from "../components/seo"
+
+const heroText = (index) => {
+  if (index === 1) {
+    return (
+      <div>
+        <h1>מאמא באהבה</h1>
+        <span>בישול ביתי עד הבית</span>
+      </div>
+    )
+  } else if (index === 2) {
+    return (
+      <div>
+        <h1>מאמא באהבה</h1>
+        <span>בישול ביתי עד הבית</span>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>מאמא באהבה</h1>
+        <span>בישול ביתי עד הבית</span>
+      </div>
+    )
+  }
+}
 
 const IndexPage = () => {
   const [currentStory, setCurrentStory] = useState('');
@@ -108,19 +133,23 @@ const IndexPage = () => {
     }
   `);
 
+
+
   const hero = [];
   for (let i = 1; i < 4; i++) {
     hero.push({
+      originalAlt: 'מאמא באהבה',
       original: data['hero' + i].childImageSharp.fluid.src,
       srcSet: data['hero' + i].childImageSharp.fluid.srcSet,
       sizes: data['hero' + i].childImageSharp.fluid.sizes,
-      description: "מאמא באהבה"
+      description: heroText(i)
     })
   }
 
   const hotDishes = [];
   for (let i = 1; i < 7; i++) {
     hotDishes.push({
+      originalAlt: 'מנות הכי אהובות',
       original: data['rec_image_' + i].childImageSharp.fluid.src,
       srcSet: data['rec_image_' + i].childImageSharp.fluid.srcSet,
       sizes: data['rec_image_' + i].childImageSharp.fluid.sizes,
@@ -131,6 +160,7 @@ const IndexPage = () => {
   const thanks = [];
   for (let i = 1; i < 5; i++) {
     thanks.push({
+      originalAlt: 'ממליצים עלינו',
       original: data['thank_image_' + i].childImageSharp.fluid.src,
       srcSet: data['thank_image_' + i].childImageSharp.fluid.srcSet,
       sizes: data['thank_image_' + i].childImageSharp.fluid.sizes,
@@ -141,6 +171,7 @@ const IndexPage = () => {
   const loveFood = [];
   for (let i = 1; i < 5; i++) {
     loveFood.push({
+      originalAlt: 'אוכל שאנשים אוהבים',
       original: data['love_food_image_' + i].childImageSharp.fluid.src,
       srcSet: data['love_food_image_' + i].childImageSharp.fluid.srcSet,
       sizes: data['love_food_image_' + i].childImageSharp.fluid.sizes,
@@ -148,9 +179,18 @@ const IndexPage = () => {
     })
   }
 
+  if (currentStory === 'hotDishes') {
+    return <Story close={() => setCurrentStory('')} stories={hotDishes} />
+  } else if (currentStory === 'thanks') {
+    return <Story close={() => setCurrentStory('')} stories={hotDishes} />
+  } else if (currentStory === 'loveFood') {
+    return <Story close={() => setCurrentStory('')} stories={hotDishes} />
+  }
+
   return (
     <Layout>
-      {/* <SEO title="Home" /> */}
+      <SEO title="בישול ביתי של אמא עם משלוח עד הבית"
+        description="מבשלת אוכל ביתי לאנשים שאוהבים לאכול. אוכל לסופי שבוע ואמצע שבוע בשליחות עד אליך" />
       <div style={{ height: '100%' }}>
         <style>{`
             #layout .pusher .nav-bar {
@@ -166,11 +206,15 @@ const IndexPage = () => {
               color: var(--main-color)
             }
 
+            h1 {
+              font-size: 35px;
+            }
+
             .image-gallery-slide .image-gallery-description {
               bottom: 5%;
               left: 50%;
               background: transparent;
-              font-size: 40px;
+              font-size: 20px;
               transform: translate(-50%, -30%);
               font-family: 'Heebo', sans-serif;
               font-weight: 300;
@@ -240,9 +284,6 @@ const IndexPage = () => {
                 text="לאנשים שמבינים באוכל" />
             </div>
           </div>
-          {currentStory === 'hotDishes' && <Story close={() => setCurrentStory('')} stories={hotDishes} />}
-          {currentStory === 'thanks' && <Story close={() => setCurrentStory('')} stories={hotDishes} />}
-          {currentStory === 'loveFood' && <Story close={() => setCurrentStory('')} stories={hotDishes} />}
           <Divider hidden />
         </Container>
       </div>

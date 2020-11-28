@@ -4,6 +4,13 @@
   outline: none;
 }
 
+#layout .image-gallery-content .image-gallery-slide .image-gallery-image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  max-height: calc(100vh);
+}
+
 .image-gallery-right-nav::before,
 .image-gallery-left-nav::before,
 .image-gallery-fullscreen-button::before {

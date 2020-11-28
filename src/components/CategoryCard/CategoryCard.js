@@ -5,14 +5,14 @@ import CircularImage from '../../components/CircularImage';
 
 import './styles.css';
 
-const CategoryCard = ({ id, src, name }) => (
+const CategoryCard = ({ id, image, name }) => (
   <Card>
     <Card.Content>
-      {src !== '' ? (
+      {image && image.src && (
         <Link to={'/category/' + id}>
-          <CircularImage src={src} />
+          <CircularImage src={image.src} />
         </Link>
-      ) : null}
+      )}
       <Segment basic className="category-meta-container">
         <Card.Header as={Header} className="break-words">
           {name}

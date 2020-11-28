@@ -34,3 +34,9 @@ export const screenHeight = () => {
   }
   return 0;
 }
+
+export const back = () => {
+  if (typeof window !== 'undefined') {
+    window.history.back();
+  }
+}

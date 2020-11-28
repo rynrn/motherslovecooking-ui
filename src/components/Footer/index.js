@@ -40,14 +40,4 @@ const Footer = () => {
   );
 }
 
-/* <Img style={{
-          verticalAlign: 'middle',
-          position: 'absolute',
-          top: '15px',
-          left: '50%',
-          transform: 'translateX(-50%)'
-        }}
-          className="ui tiny circular image"
-          fluid={data.file.childImageSharp.fluid} alt={title} />
-       */
 export default Footer;

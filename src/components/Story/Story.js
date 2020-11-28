@@ -9,7 +9,7 @@ const Story = ({ stories, close }) => {
     content: () => (
       <>
         <Icon className="story-close-icon" onClick={() => close()} name="close" />
-        <img src={story.original} style={{ width: 'auto', maxWidth: '100%', maxHeight: '100%', margin: 'auto' }} />
+        <img alt="Story" src={story.original} style={{ width: 'auto', maxWidth: '100%', maxHeight: '100%', margin: 'auto' }} />
       </>
     )
   }));

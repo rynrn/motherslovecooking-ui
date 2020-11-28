@@ -1,14 +1,27 @@
 import React from "react"
 import _ from "lodash"
 import { graphql } from "gatsby"
-import { Header } from 'semantic-ui-react';
+import { Header, Button } from 'semantic-ui-react';
+import SEO from "../components/seo"
 import Layout from "../components/Layout/Layout"
+import { back } from '../utils/page-util';
 import ProductCardContainer from '../containers/ProductCardContainer/ProductCardContainer';
 
 const CategoriesPage = ({ data }) => {
   return (
     <Layout>
-      <Header textAlign="center" className="products-list-header">{data.category.name}</Header>
+      <SEO title={data.category.name}
+        keywords={`${data.category.name}, אוכל ביתי, מבשלת, עיקריות, תוספות, משלוחים`}
+        description={`${data.category.name}, ועוד מנות מחכות לך באתר, פשוט להזמין וזה מגיע אליך עם המון אהבה`} />
+      <Header as="h1" textAlign="center" className="products-list-header">{data.category.name}</Header>
+      {_.isEmpty(data.category.products) && (
+        <div style={{ textAlign: 'center', padding: '100px 0' }}>
+          לא קיימים מוצרים לקטגוריה זו
+          <br />
+          <br />
+          <Button onClick={() => back()}>חזור לדף הקודם</Button>
+        </div>
+      )}
       <div className="products-grid">
         {
           _.map(data.category.products, (node) =>
