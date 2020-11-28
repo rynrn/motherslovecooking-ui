@@ -30,6 +30,16 @@ export const menuItem = graphql`
   }
 `
 
+export const menuBigItem = graphql`
+  fragment menuBigItem on File {
+    childImageSharp {
+      fixed(width: 1000) {
+        ...GatsbyImageSharpFixed
+      }
+    }
+  }
+`
+
 export const avatarStoryItem = graphql`
   fragment avatarStoryItem on File {
     childImageSharp {

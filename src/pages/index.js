@@ -68,13 +68,13 @@ const IndexPage = () => {
         ...menuItem
       }
       boss: file(relativePath: { eq: "shutterstock_1112366681.jpg" }) {
-        ...menuItem
+        ...menuBigItem
       }
       delivery: file(relativePath: { eq: "shutterstock_1771298879.jpg" }) {
-        ...menuItem
+        ...menuBigItem
       }
       deals: file(relativePath: { eq: "shutterstock_1612915471.jpg" }) {
-        ...menuItem
+        ...menuBigItem
       }
       avatar_rec_image: file(relativePath: { eq: "rec-image-1.jpeg" }) {
         ...avatarStoryItem
@@ -130,10 +130,17 @@ const IndexPage = () => {
       avatar_love_food_image: file(relativePath: { eq: "love-food-image-3.jpeg" }) {
         ...avatarStoryItem
       }
+      north: file(relativePath: { eq: "shutterstock_124230778.jpg" }) {
+        ...menuItem
+      }
+      center: file(relativePath: { eq: "shutterstock_580204774.jpg" }) {
+        ...menuItem
+      }
+      south: file(relativePath: { eq: "shutterstock_1039193779.jpg" }) {
+        ...menuItem
+      }
     }
   `);
-
-
 
   const hero = [];
   for (let i = 1; i < 4; i++) {
@@ -252,14 +259,14 @@ const IndexPage = () => {
           <Title text="איזורי משלוח" subtext="Delivery zones" />
           <Grid className="text-center">
             <Grid.Row columns={3}>
-              <ImageGridColumnCard text={'דרום'} src={'https://image.shutterstock.com/image-photo/pink-rocks-desert-against-beautiful-600w-1039193779.jpg'} />
-              <ImageGridColumnCard text={'מרכז'} src={'https://image.shutterstock.com/image-photo/apartment-building-flowers-on-balconies-600w-654568261.jpg'} />
-              <ImageGridColumnCard text={'צפון'} src={'https://image.shutterstock.com/image-photo/fantastic-swing-on-tree-pink-600w-124230778.jpg'} />
+              <ImageGridColumnCard text={'דרום - יבנה, אשדוד, אשקלון'} src={data.south.childImageSharp.fixed.src} />
+              <ImageGridColumnCard text={'מרכז הארץ'} src={data.center.childImageSharp.fixed.src} />
+              <ImageGridColumnCard text={'צפון - נתניה, חדרה'} src={data.north.childImageSharp.fixed.src} />
             </Grid.Row>
           </Grid>
           <Divider />
           <Title text="מי אני" subtext="About me" />
-          <ImageCard data={data.boss.childImageSharp.fixed} text='מי אני' shouldHideText={true} />
+          <ImageCard to="/about-me" data={data.boss.childImageSharp.fixed} text='מי אני' shouldHideText={true} />
           <Divider hidden />
           <Title text="שאלות נפוצות" subtext="Questions" />
           <Divider />

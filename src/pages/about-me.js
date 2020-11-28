@@ -26,7 +26,7 @@ const AboutMePage = () => {
     <Layout>
       <SEO title="קצת על הבוסית"
         description="אני ריקי אביסרור, בעלת עסק של בישולים ומשלוחים עד הבית. העסק שהרמתי בעשר אצבעות ואני מקדישה לו את החיים והאהבה שלי" />
-      <div style={{ height: '100%' }}>
+      <div className="boss" style={{ height: '100%' }}>
         <style>{`
             #layout .pusher .nav-bar {
               background: transparent !important;
@@ -64,11 +64,11 @@ const AboutMePage = () => {
               background-image: url('${data.boss.childImageSharp.fluid.src}');
               background-size: cover;
             }
-            p {
+            .boss p {
               font-family: 'Heebo', sans-serif !important;
               font-weight: 300 !important;
             }
-            img {
+            .boss img {
               float: right;
               margin-left: 20px;
             }
