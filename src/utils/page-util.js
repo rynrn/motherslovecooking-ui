@@ -1,4 +1,3 @@
-
 export const openFullscreen = (elem) => {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
@@ -10,11 +9,14 @@ export const openFullscreen = (elem) => {
 }
 
 export const closeFullscreen = () => {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) { /* Safari */
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE11 */
-    document.msExitFullscreen();
+  if (typeof window !== 'undefined') {
+    const { document } = window;
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { /* Safari */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE11 */
+      document.msExitFullscreen();
+    }
   }
 }
