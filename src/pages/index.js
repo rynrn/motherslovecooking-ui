@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Divider, Grid, Container } from 'semantic-ui-react';
 import ImageGallery from 'react-image-gallery';
 import ImageGridColumnCard from '../components/ImageCard/ImageGridColumnCard';
+import Story from '../components/Story/Story';
 import ImageCard from '../components/ImageCard/ImageCard';
 import Title from '../components/Title/Title';
 import Layout from "../components/Layout/Layout"
@@ -48,6 +49,60 @@ const IndexPage = () => {
       deals: file(relativePath: { eq: "shutterstock_1612915471.jpg" }) {
         ...menuItem
       }
+      avatar_rec_image: file(relativePath: { eq: "rec-image-1.jpeg" }) {
+        ...avatarStoryItem
+      }
+      rec_image_1: file(relativePath: { eq: "rec-image-1.jpeg" }) {
+        ...heroImageFluid
+      }
+      rec_image_2: file(relativePath: { eq: "rec-image-2.jpeg" }) {
+        ...heroImageFluid
+      }
+      rec_image_3: file(relativePath: { eq: "rec-image-3.jpeg" }) {
+        ...heroImageFluid
+      }
+      rec_image_4: file(relativePath: { eq: "rec-image-4.jpeg" }) {
+        ...heroImageFluid
+      }
+      rec_image_5: file(relativePath: { eq: "rec-image-5.jpeg" }) {
+        ...heroImageFluid
+      }
+      rec_image_6: file(relativePath: { eq: "rec-image-6.jpeg" }) {
+        ...heroImageFluid
+      }
+      thank_image_1: file(relativePath: { eq: "thank-image-1.jpeg" }) {
+        ...heroImageFluid
+      }
+      thank_image_2: file(relativePath: { eq: "thank-image-2.jpeg" }) {
+        ...heroImageFluid
+      }
+      thank_image_3: file(relativePath: { eq: "thank-image-3.jpeg" }) {
+        ...heroImageFluid
+      }
+      thank_image_4: file(relativePath: { eq: "thank-image-4.jpeg" }) {
+        ...heroImageFluid
+      }
+      avatar_thank_image: file(relativePath: { eq: "thank-image-2.jpeg" }) {
+        ...avatarStoryItem
+      }
+      love_food_image_1: file(relativePath: { eq: "love-food-image-1.jpeg" }) {
+        ...heroImageFluid
+      }
+      love_food_image_2: file(relativePath: { eq: "love-food-image-2.jpeg" }) {
+        ...heroImageFluid
+      }
+      love_food_image_3: file(relativePath: { eq: "love-food-image-3.jpeg" }) {
+        ...heroImageFluid
+      }
+      love_food_image_4: file(relativePath: { eq: "love-food-image-4.jpeg" }) {
+        ...heroImageFluid
+      }
+      love_food_image_5: file(relativePath: { eq: "love-food-image-5.jpeg" }) {
+        ...heroImageFluid
+      }
+      avatar_love_food_image: file(relativePath: { eq: "love-food-image-3.jpeg" }) {
+        ...avatarStoryItem
+      }
     }
   `);
 
@@ -57,6 +112,36 @@ const IndexPage = () => {
       original: data['hero' + i].childImageSharp.fluid.src,
       srcSet: data['hero' + i].childImageSharp.fluid.srcSet,
       sizes: data['hero' + i].childImageSharp.fluid.sizes,
+      description: "מאמא באהבה"
+    })
+  }
+
+  const hotDishes = [];
+  for (let i = 1; i < 7; i++) {
+    hotDishes.push({
+      original: data['rec_image_' + i].childImageSharp.fluid.src,
+      srcSet: data['rec_image_' + i].childImageSharp.fluid.srcSet,
+      sizes: data['rec_image_' + i].childImageSharp.fluid.sizes,
+      description: "מאמא באהבה"
+    })
+  }
+
+  const thanks = [];
+  for (let i = 1; i < 5; i++) {
+    thanks.push({
+      original: data['thank_image_' + i].childImageSharp.fluid.src,
+      srcSet: data['thank_image_' + i].childImageSharp.fluid.srcSet,
+      sizes: data['thank_image_' + i].childImageSharp.fluid.sizes,
+      description: "מאמא באהבה"
+    })
+  }
+
+  const loveFood = [];
+  for (let i = 1; i < 5; i++) {
+    loveFood.push({
+      original: data['love_food_image_' + i].childImageSharp.fluid.src,
+      srcSet: data['love_food_image_' + i].childImageSharp.fluid.srcSet,
+      sizes: data['love_food_image_' + i].childImageSharp.fluid.sizes,
       description: "מאמא באהבה"
     })
   }
@@ -134,16 +219,24 @@ const IndexPage = () => {
           <Divider />
           <ImageCard to="/category/29" data={data.deals.childImageSharp.fixed} text='מבצעים ודילים' />
           <Divider hidden />
-          {/* <Title text="המנות הכי חמות" subtext="The hottest dishes" />
+          <Title text="הסטוריז שלנו" subtext="Our stories" />
           <Divider hidden />
-          <ImageGallery items={hotDishes}
-            isRTL={true}
-            sizes="(min-width: 400px) 400px, 100vw"
-            showThumbnails={false}
-            showFullscreenButton={false}
-            showPlayButton={false} />
           <Divider hidden />
-          <Title text="לקוחות ממליצים" subtext="Customers recommend" />
+          <div className="wrapper-stories-items">
+            <div className="stories-items">
+              <Story stories={hotDishes}
+                avatar={data.avatar_rec_image.childImageSharp.fixed}
+                text="המנות הכי מבוקשות" />
+              <Story stories={thanks}
+                avatar={data.avatar_thank_image.childImageSharp.fixed}
+                text="לקוחות ממליצים עלינו" />
+              <Story stories={loveFood}
+                avatar={data.avatar_love_food_image.childImageSharp.fixed}
+                text="לאנשים שמבינים באוכל" />
+            </div>
+          </div>
+          <Divider hidden />
+          {/* <Title text="לקוחות ממליצים" subtext="Customers recommend" />
           <ImageGallery items={customersRecommendations}
             isRTL={true}
             sizes="(min-width: 400px) 400px, 100vw"

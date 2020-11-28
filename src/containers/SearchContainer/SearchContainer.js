@@ -13,8 +13,6 @@ const SearchContainer = ({ data }) => {
     dispatch({ type: 'add_products', products: data });
   }, [data]);
 
-  console.log('products:::', products)
-
   const inputProps = {
     placeholder: 'חיפוש',
     value,

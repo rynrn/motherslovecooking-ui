@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Sidebar } from 'semantic-ui-react';
-import SideMenu from '../../views/SideMenu';
+import SideMenu from '../../components/SideMenu/SideMenu';
 import NavBar from "../NavBar/index"
 import Footer from "../Footer/index"
 import { CartProvider } from "../../context/cart"

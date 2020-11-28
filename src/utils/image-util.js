@@ -29,3 +29,13 @@ export const menuItem = graphql`
     }
   }
 `
+
+export const avatarStoryItem = graphql`
+  fragment avatarStoryItem on File {
+    childImageSharp {
+      fixed(width: 100) {
+        ...GatsbyImageSharpFixed
+      }
+    }
+  }
+`

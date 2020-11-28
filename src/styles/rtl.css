@@ -1,29 +1,9 @@
-.page-categories .ui.card {
-  direction: rtl;
-}
-
-.redux-toastr .toastr .rrt-middle-container {
-  text-align: right;
-  direction: rtl;
-}
-
-.cart-summary {
-  direction: rtl;
-}
-
-.cart-summary .ui.left.aligned.header {
-  text-align: right;
-  direction: rtl;
-}
-
-.footer {
-  direction: rtl;
-}
-
-.products-list-header {
-  direction: rtl;
-}
-
-.categories-list {
+.page-categories .ui.card,
+.cart-summary,
+.cart-summary .ui.left.aligned.header,
+.footer,
+.products-list-header,
+.categories-list,
+.wrapper-stories-items {
   direction: rtl;
 }

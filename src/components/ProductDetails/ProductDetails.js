@@ -105,7 +105,6 @@ const ProductDetails = ({ name, price, images, id,
       <div className="products-grid">
         {
           related_products.map(relatedProduct => {
-            console.log('relatedProduct : ', relatedProduct)
             return (
               <ProductCard {...relatedProduct}
                 key={relatedProduct.wordpress_id}

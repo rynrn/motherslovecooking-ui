@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from "lodash"
 import { Link } from 'gatsby';
-import { Card, Button, Header, Grid, Icon } from 'semantic-ui-react';
+import { Card, Header, Grid } from 'semantic-ui-react';
 import CircularImage from '../CircularImage';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import '../../utils/image-util';
