@@ -112,6 +112,7 @@ h2, h4, h6 {
   background: rgba(0,0,0,0.3);
   border-radius: 30px;
   padding: 10px;
+  line-height: 30px;
 }
 
 .big-menu-card .img-text {
