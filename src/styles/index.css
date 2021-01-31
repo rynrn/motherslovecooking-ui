@@ -24,6 +24,14 @@ h2, h4, h6 {
   font-weight: 100 !important;
 }
 
+.head-link {
+  font-size: 30px;
+}
+
+.head-link a {
+  color: #fff;
+}
+
 .font-weight-100 {
   font-weight: 100 !important;
 }
@@ -62,8 +70,8 @@ h2, h4, h6 {
 .big-menu-card {
   position: relative;
   text-align: center;
-
 }
+
 #layout .big-menu-card img {
   margin: 0 auto;
   width: 100vw;
@@ -71,12 +79,21 @@ h2, h4, h6 {
   object-fit: cover;
 }
 
-.big-menu-card .img-text {
-  font-size: 30px;
+#layout .big-menu-card.thin img {
+  height: 50vh;
 }
 
-/* .menu-card img, .big-menu-card img { */
-.menu-card img {
+#layout .big-menu-card.w-h-100-p img {
+  width: 100%;
+  height: 100%;
+}
+
+#layout .big-menu-card.pos-80 img {
+  object-position: 0 80%;
+}
+
+.menu-card img, .big-menu-card img {
+/* .menu-card img { */
   border-radius: 10px 10px 10px 10px;
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.78);
 }
@@ -95,4 +112,9 @@ h2, h4, h6 {
   background: rgba(0,0,0,0.3);
   border-radius: 30px;
   padding: 10px;
+}
+
+.big-menu-card .img-text {
+  font-size: 30px;
+  padding: 20px;
 }

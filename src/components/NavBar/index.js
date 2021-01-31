@@ -22,7 +22,7 @@ const NavBar = ({ title, openMenu }) => {
 
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "96icon_1512486555.jpg" }) {
+      file(relativePath: { eq: "196icon_1512486555.jpg" }) {
         childImageSharp {
           fixed {
             src
@@ -42,7 +42,9 @@ const NavBar = ({ title, openMenu }) => {
           top: '15px',
           left: '50%',
           transform: 'translateX(-50%)'
-        }} src={data.file.childImageSharp.fixed.src}
+        }}
+          className="logo"
+          src={data.file.childImageSharp.fixed.src}
           size='tiny' circular bordered alt={title} />
       </Link>
       <Menu fluid secondary>

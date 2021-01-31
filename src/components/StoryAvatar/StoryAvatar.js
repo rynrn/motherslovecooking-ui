@@ -1,12 +1,10 @@
 import React from 'react';
 import _ from 'lodash';
 
-const StoryAvatar = ({ avatar, text, stories, oepn }) => {
-  const _avatar = _.get(avatar, 'src') || _.head(stories).original;
-
+const StoryAvatar = ({ avatar, text }) => {
   return (
-    <button className="story-avatar" onClick={() => oepn()}>
-      <img src={_avatar} alt={text} />
+    <button className="story-avatar">
+      <img src={avatar} alt={text} />
       <div className="text">{text}</div>
     </button>
 

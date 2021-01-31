@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { Divider, Grid, Container } from 'semantic-ui-react';
 import ImageGallery from 'react-image-gallery';
 import ImageGridColumnCard from '../components/ImageCard/ImageGridColumnCard';
@@ -16,28 +16,24 @@ const heroText = (index) => {
     return (
       <div>
         <h1>מאמא באהבה</h1>
-        <span>בישול ביתי עד הבית</span>
+        <span>אוכל ביתי ומשלוחים עד הבית</span>
       </div>
     )
   } else if (index === 2) {
     return (
-      <div>
-        <h1>מאמא באהבה</h1>
-        <span>בישול ביתי עד הבית</span>
-      </div>
-    )
-  } else {
-    return (
-      <div>
-        <h1>מאמא באהבה</h1>
-        <span>בישול ביתי עד הבית</span>
+      <div className="head-link">
+        <Link to="/categories">לצפייה בתפריט המשלוחים</Link>
       </div>
     )
   }
+  return (
+    <div className="head-link">
+      <Link to="/categories">להזמנות משלוח עד הבית</Link>
+    </div>
+  )
 }
 
 const IndexPage = () => {
-  const [currentStory, setCurrentStory] = useState('');
   const data = useStaticQuery(graphql`
     query IndexPageQuery {
       hero1: file(relativePath: { eq: "shutterstock_757818340.jpg" }) {
@@ -139,6 +135,20 @@ const IndexPage = () => {
       south: file(relativePath: { eq: "shutterstock_1039193779.jpg" }) {
         ...menuItem
       }
+
+
+      sofrito: file(relativePath: { eq: "love-food-image-4.jpeg" }) {
+        ...avatarStoryItem
+      }
+      deasert: file(relativePath: { eq: "deasert.jpg" }) {
+        ...avatarStoryItem
+      }
+      thank_2: file(relativePath: { eq: "thank-image-1.jpeg" }) {
+        ...avatarStoryItem
+      }
+      avatar_salat: file(relativePath: { eq: "shutterstock_614151992.jpg" }) {
+        ...avatarStoryItem
+      }
     }
   `);
 
@@ -184,14 +194,6 @@ const IndexPage = () => {
       sizes: data['love_food_image_' + i].childImageSharp.fluid.sizes,
       description: "מאמא באהבה"
     })
-  }
-
-  if (currentStory === 'hotDishes') {
-    return <Story close={() => setCurrentStory('')} stories={hotDishes} />
-  } else if (currentStory === 'thanks') {
-    return <Story close={() => setCurrentStory('')} stories={hotDishes} />
-  } else if (currentStory === 'loveFood') {
-    return <Story close={() => setCurrentStory('')} stories={hotDishes} />
   }
 
   return (
@@ -254,41 +256,57 @@ const IndexPage = () => {
             </Grid.Row>
           </Grid>
           <Divider hidden />
-          <ImageCard to="/products" data={data.delivery.childImageSharp.fixed} text='להזמנות' />
+          <ImageCard to="/categories"
+            className="thin pos-80"
+            data={data.delivery.childImageSharp.fixed} text='להזמנת אוכל ביתי עד הבית' />
           <Divider />
           <Title text="איזורי משלוח" subtext="Delivery zones" />
           <Grid className="text-center">
             <Grid.Row columns={3}>
-              <ImageGridColumnCard text={'דרום - יבנה, אשדוד, אשקלון'} src={data.south.childImageSharp.fixed.src} />
-              <ImageGridColumnCard text={'מרכז הארץ'} src={data.center.childImageSharp.fixed.src} />
-              <ImageGridColumnCard text={'צפון - נתניה, חדרה'} src={data.north.childImageSharp.fixed.src} />
+              <ImageGridColumnCard text={'איזורי משלוחים - דרום'} src={data.south.childImageSharp.fixed.src} />
+              <ImageGridColumnCard text={'איזורי משלוחים - מרכז'} src={data.center.childImageSharp.fixed.src} />
+              <ImageGridColumnCard text={'איזורי משלוחים - צפון'} src={data.north.childImageSharp.fixed.src} />
             </Grid.Row>
           </Grid>
           <Divider />
           <Title text="מי אני" subtext="About me" />
-          <ImageCard to="/about-me" data={data.boss.childImageSharp.fixed} text='מי אני' shouldHideText={true} />
+          <ImageCard to="/about-me" className="w-h-100-p" data={data.boss.childImageSharp.fixed} text='מי אני' shouldHideText={true} />
           <Divider hidden />
-          <Title text="שאלות נפוצות" subtext="Questions" />
-          <Divider />
-          <ImageCard to="/category/29" data={data.deals.childImageSharp.fixed} text='מבצעים ודילים' />
+          {/* <Title text="שאלות נפוצות" subtext="Questions" /> */}
+          {/* <Divider /> */}
+          <ImageCard to="/category/29"
+            className="thin pos-80"
+            data={data.deals.childImageSharp.fixed} text='מבצעים ודילים' />
           <Divider hidden />
           <Title text="הסטוריז שלנו" subtext="Our stories" />
           <Divider hidden />
           <Divider hidden />
           <div className="wrapper-stories-items">
             <div className="stories-items">
-              <StoryAvatar oepn={() => setCurrentStory('hotDishes')}
-                stories={hotDishes}
-                avatar={data.avatar_rec_image.childImageSharp.fixed}
-                text="המנות הכי מבוקשות" />
-              <StoryAvatar oepn={() => setCurrentStory('thanks')}
-                stories={thanks}
-                avatar={data.avatar_thank_image.childImageSharp.fixed}
-                text="לקוחות ממליצים עלינו" />
-              <StoryAvatar oepn={() => setCurrentStory('loveFood')}
-                stories={loveFood}
-                avatar={data.avatar_love_food_image.childImageSharp.fixed}
-                text="לאנשים שמבינים באוכל" />
+              <Link to="https://www.instagram.com/stories/highlights/17861894414026495/">
+                <StoryAvatar avatar={data.sofrito.childImageSharp.fixed.src}
+                  text="המנות הכי מבוקשות" />
+              </Link>
+
+              <Link to="https://www.instagram.com/stories/highlights/17864165059888652/">
+                <StoryAvatar avatar={data.avatar_thank_image.childImageSharp.fixed.src}
+                  text="לקוחות ממליצים עלינו" />
+              </Link>
+
+              <Link to="https://www.instagram.com/stories/highlights/17854120193158717/">
+                <StoryAvatar avatar={data.deasert.childImageSharp.fixed.src}
+                  text="קינוחים ועוגיות" />
+              </Link>
+
+              <Link to="https://www.instagram.com/stories/highlights/17922507544416983/">
+                <StoryAvatar avatar={data.thank_2.childImageSharp.fixed.src}
+                  text="עוד המלצות עלינו" />
+              </Link>
+
+              <Link to="https://www.instagram.com/stories/highlights/17883386317655211/">
+                <StoryAvatar avatar={data.avatar_salat.childImageSharp.fixed.src}
+                  text="ועוד קצת המלצות" />
+              </Link>
             </div>
           </div>
           <Divider hidden />

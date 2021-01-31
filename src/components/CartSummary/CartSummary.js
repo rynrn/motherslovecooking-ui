@@ -25,7 +25,7 @@ const CartSummary = ({ total, minimumTotal, currency, orderCheckout }) => {
           total < minimumTotal && <b><br />
             באפשרותך להוסיף עוד מוצרים לסל קניות
             <br />
-            <Link to="/products">הוספת מוצרים</Link>
+            <Link to="/categories">הוספת מוצרים</Link>
             <br />
             מינימום הזמנה של {minimumTotal} שח
           </b>

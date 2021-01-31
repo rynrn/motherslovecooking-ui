@@ -4,6 +4,11 @@
 .footer,
 .products-list-header,
 .categories-list,
-.wrapper-stories-items {
-  direction: rtl;
+.wrapper-stories-items,
+.cart-table {
+  direction: rtl !important;
+}
+
+.cart-table {
+  text-align: right !important;
 }

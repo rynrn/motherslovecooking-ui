@@ -26,9 +26,10 @@ const CategoriesPage = () => {
 
   return (
     <Layout>
-      <SEO title={'קטגוריות מוצרים'}
-        keywords={`קטגוריות מוצרים, משלוח, אוכל ביתי, בישול ביתי`}
-        description={`קטגוריות מוצרים, ועוד מלא סוגי מאכלים עם משלוח עד הבית`} />
+      <SEO title={'קטגוריות אוכל ביתי למשלוחים'}
+        keywords={`קטגוריות אוכל ביתי, משלוח, אוכל ביתי, בישול ביתי`}
+        description={`קטגוריות אוכל ביתי, ועוד מלא סוגי מאכלים עם משלוח עד הבית`} />
+      <h1 className="text-center">קטגוריות אוכל ביתי</h1>
       <Card.Group itemsPerRow={2} className="categories-list">
         {
           data.categories.edges.map(({ node }) =>
