@@ -34,6 +34,10 @@ const Footer = () => {
         </div>
       </Container>
       <div className="pink-strip">
+        <div>
+          <a href="tel:0533044233">053-304-4233</a> :טלפון
+        </div>
+        <br />
         כל הזכויות שמורות למאמא באהבה {year}
       </div>
     </footer>

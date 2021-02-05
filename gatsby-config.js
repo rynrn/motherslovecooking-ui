@@ -26,6 +26,7 @@ module.exports = {
       options: {
         name: `מאמא באהבה`,
         short_name: `מאמא באהבה`,
+        phone: `053-304-4233`,
         start_url: `/`,
         background_color: `#fb98cf`,
         theme_color: `#fb98cf`,

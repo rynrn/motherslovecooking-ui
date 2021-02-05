@@ -107,3 +107,12 @@
 #layout .cart-table-quantity {
   text-align: center;
 }
+
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.search-wrapper input {
+  width: 250px;
+}

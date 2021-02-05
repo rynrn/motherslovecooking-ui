@@ -5,10 +5,12 @@
 .products-list-header,
 .categories-list,
 .wrapper-stories-items,
-.cart-table {
+.cart-table,
+.search-wrapper input {
   direction: rtl !important;
 }
 
-.cart-table {
+.cart-table,
+.search-wrapper input {
   text-align: right !important;
 }

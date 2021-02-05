@@ -23,6 +23,11 @@ const SideMenu = (props) => (
         <Icon name="home" />בית
       </Menu.Item>
     </Link>
+    <Link to="/products" onClick={props.closeMenu}>
+      <Menu.Item name="ordering">
+        <Icon name="search" />חיפוש מנות
+      </Menu.Item>
+    </Link>
     <Link to="/categories" onClick={props.closeMenu}>
       <Menu.Item name="categories">
         <Icon name="browser" />קטגוריות
