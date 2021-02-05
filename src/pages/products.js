@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import _ from "lodash"
 import { graphql } from "gatsby"
 import SEO from '../components/seo';
 import ProductCardContainer from '../containers/ProductCardContainer/ProductCardContainer';
-import { Header, Input } from 'semantic-ui-react';
+import { Header, Input, Button } from 'semantic-ui-react';
 import Layout from "../components/Layout/Layout"
 import * as queryString from "query-string";
 
@@ -23,6 +23,12 @@ const ProductsPage = ({ data, location }) => {
     return _.includes(product.name, search) || inCategories;
   });
 
+  const handleClick = () => {
+    if (search !== '') {
+      window.history.pushState(null, null, `/products/?q=${search}`);
+    }
+  }
+
   return (
     <Layout>
       <SEO title="כל המנות והמוצרים"
@@ -35,6 +41,7 @@ const ProductsPage = ({ data, location }) => {
           value={search}
           placeholder="חיפוש"
           aria-label="חיפוש מנות באתר" />
+        <Button icon='search' onClick={() => handleClick()} />
       </div>
       <div className="products-grid">
         {
