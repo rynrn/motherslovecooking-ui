@@ -49,6 +49,7 @@ const ProductsPage = ({ data, location }) => {
             <ProductCardContainer key={product.wordpress_id}
               id={product.wordpress_id}
               name={product.name}
+              short_description={product.short_description}
               categories={product.categories}
               price={product.price}
               images={product.images} />
@@ -67,6 +68,7 @@ export const query = graphql`
         wordpress_id
         name
         price
+        short_description
         categories {
           name
         }

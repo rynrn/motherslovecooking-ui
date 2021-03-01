@@ -6,10 +6,15 @@ import CircularImage from '../CircularImage';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import '../../utils/image-util';
 
-const ProductCard = ({ name, id, wordpress_id, price, src, currency, quantity,
-  categories = [], add, decrement }) => {
+const ProductCard = ({ name, id, wordpress_id, price, short_description, src, currency, quantity,
+  categories = [], add, decrement, isRelatedProduct = false }) => {
+  const cardAttr = isRelatedProduct ? {
+    itemProp: 'isRelatedTo',
+    itemScope: 'itemcope',
+    itemType: 'http://schema.org/Product'
+  } : {};
   return (
-    <Card centered className="component-card">
+    <Card centered className="component-card" {...cardAttr}>
       <Card.Content>
         <Grid>
           <Grid.Column width={5}>
@@ -18,15 +23,16 @@ const ProductCard = ({ name, id, wordpress_id, price, src, currency, quantity,
             </Link>
           </Grid.Column>
           <Grid.Column width={11}>
-            <Card.Header className="break-words">{name}</Card.Header>
-            <Card.Meta>{categories.map(cat => cat.name).join(', ')}</Card.Meta>
-            {price ?
-              (
-                <Header as="h3" color="pink">
-                  <div dangerouslySetInnerHTML={{ __html: currency + price }} />
-                </Header>
-              )
-              : null}
+            <Card.Header as="h3" className="break-words">{name}</Card.Header>
+            <Card.Meta className="meta-card">
+              <div className="tag-card">
+                {categories.map(cat => cat.name).join(', ')}
+              </div>
+              <div className="short-description-card" dangerouslySetInnerHTML={{ __html: short_description }} />
+            </Card.Meta>
+            <div className="price-card">
+              מחיר: <span dangerouslySetInnerHTML={{ __html: currency + price }} />
+            </div>
           </Grid.Column>
         </Grid>
       </Card.Content>

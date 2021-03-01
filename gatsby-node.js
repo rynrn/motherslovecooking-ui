@@ -80,10 +80,4 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   });
 
-  // Search page
-  // const searchPageTemplate = path.resolve('./src/templates/search.js')
-  // createPage({
-  //   path: `/search`,
-  //   component: searchPageTemplate
-  // })
 }

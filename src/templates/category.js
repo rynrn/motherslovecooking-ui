@@ -28,6 +28,7 @@ const CategoriesPage = ({ data }) => {
             <ProductCardContainer key={node.wordpress_id}
               id={node.wordpress_id}
               name={node.name}
+              short_description={node.short_description}
               categories={node.categories}
               price={node.price}
               images={node.images} />
@@ -47,6 +48,7 @@ export const query = graphql`
         wordpress_id
         name
         price
+        short_description
         categories {
           name
         }

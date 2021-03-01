@@ -1,23 +1,31 @@
 import React from "react"
+import striptags from "striptags"
 import { graphql } from "gatsby"
 import SEO from '../components/seo';
 import ProductDetails from '../components/ProductDetails/ProductDetails';
 import Layout from "../components/Layout/Layout"
 
 const ProductPage = ({ data }) => {
+  const categories = data.product.categories.map((cat) => cat.name).join(', ');
+  const description = striptags(data.product.description);
+  const price = striptags(data.product.price);
   return (
     <Layout>
-      <SEO title={data.product.name}
-        keywords={`${data.product.name}, אוכל ביתי, מבשלת, עיקריות, תוספות, משלוחים`}
-        description={`${data.product.name}, ועוד מנות מחכות לך באתר, פשוט להזמין וזה מגיע אליך עם המון אהבה`} />
+      <SEO title={`${data.product.name}`}
+        keywords={`${data.product.name}, ${categories}, אוכל ביתי, מבשלת, עיקריות, תוספות, משלוחים`}
+        description={`${description}, במחיר של ${price}${data.site.siteMetadata.currency}, ${categories}`} />
       <ProductDetails key={data.product.wordpress_id} {...data.product} id={data.product.wordpress_id} />
     </Layout>
   );
 }
 
-
 export const query = graphql`
   query ProductPage($id: Int!) {
+    site {
+      siteMetadata {
+        currency
+      }
+    }
     product: wcProducts(wordpress_id: {eq: $id}) {
       wordpress_id
       name
@@ -25,6 +33,7 @@ export const query = graphql`
       backorders_allowed
       stock_status
       description
+      short_description
       categories {
         wordpress_id
         name
@@ -39,6 +48,7 @@ export const query = graphql`
         backorders_allowed
         stock_status
         description
+        short_description
         categories {
           wordpress_id
           name

@@ -1,3 +1,25 @@
 .component-card .header {
-  min-height: 40px;
+  /* min-height: 40px; */
+  margin: 0;
+}
+
+.component-card .price-card {
+  color: var(--main-color);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+}
+
+.component-card .meta-card {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+}
+
+.component-card .meta-card .tag-card {
+  color: var(--text-light-color);
+  margin: 0;
+}
+
+
+.component-card .short-description-card {
+  color: var(--text-regular-color);
 }
