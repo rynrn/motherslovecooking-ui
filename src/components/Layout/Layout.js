@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import { Sidebar } from 'semantic-ui-react';
+import { useStaticQuery, graphql, Link } from "gatsby"
+import { Sidebar, Button } from 'semantic-ui-react';
 import SideMenu from '../../components/SideMenu/SideMenu';
 import NavBar from "../NavBar/index"
 import Footer from "../Footer/index"
@@ -10,6 +10,8 @@ import "../../styles/global.css"
 
 const Layout = ({ children }) => {
   const [isMenuOpen, setMenu] = useState(false);
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+  const isCartPage = pathname === '/cart';
 
   const data = useStaticQuery(graphql`
     query LayoutSiteTitleQuery {
@@ -32,6 +34,11 @@ const Layout = ({ children }) => {
           </Sidebar.Pusher>
         </Sidebar.Pushable>
         <Footer />
+        {!isCartPage &&
+          <Link to="/cart">
+            <Button circular icon="cart" className="go-to-cart" />
+          </Link>
+        }
       </div>
     </CartProvider>
   )

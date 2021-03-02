@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from "lodash"
 import { Link } from 'gatsby';
-import { Card, Header, Grid } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
 import CircularImage from '../CircularImage';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import '../../utils/image-util';
@@ -11,7 +11,7 @@ const ProductCard = ({ name, id, wordpress_id, price, short_description, src, cu
   const cardAttr = isRelatedProduct ? {
     itemProp: 'isRelatedTo',
     itemScope: 'itemcope',
-    itemType: 'http://schema.org/Product'
+    itemType: 'https://schema.org/Product'
   } : {};
   return (
     <Card centered className="component-card" {...cardAttr}>
@@ -23,7 +23,9 @@ const ProductCard = ({ name, id, wordpress_id, price, short_description, src, cu
             </Link>
           </Grid.Column>
           <Grid.Column width={11}>
-            <Card.Header as="h3" className="break-words">{name}</Card.Header>
+            <Link to={'/product/' + (id || wordpress_id)}>
+              <Card.Header as="h3" className="break-words">{name}</Card.Header>
+            </Link>
             <Card.Meta className="meta-card">
               <div className="tag-card">
                 {categories.map(cat => cat.name).join(', ')}

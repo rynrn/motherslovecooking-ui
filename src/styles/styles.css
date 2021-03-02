@@ -117,3 +117,12 @@
 .search-wrapper input {
   width: 250px;
 }
+
+.go-to-cart {
+  position: fixed;
+  left: 8px;
+  bottom: 18px;
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+  border: 1px solid var(--text-light-color) !important;
+}

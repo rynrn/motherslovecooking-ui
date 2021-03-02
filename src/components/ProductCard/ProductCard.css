@@ -1,6 +1,7 @@
 .component-card .header {
   /* min-height: 40px; */
   margin: 0;
+  color: var(--text-regular-color);
 }
 
 .component-card .price-card {
