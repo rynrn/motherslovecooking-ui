@@ -149,6 +149,9 @@ const IndexPage = () => {
       avatar_salat: file(relativePath: { eq: "shutterstock_614151992.jpg" }) {
         ...avatarStoryItem
       }
+      passover: file(relativePath: { eq: "shutterstock_596740322.jpg" }) {
+        ...menuBigItem
+      }
     }
   `);
 
@@ -240,6 +243,11 @@ const IndexPage = () => {
           showFullscreenButton={false}
           showPlayButton={false} />
         <Container>
+          <Divider hidden />
+          <Title text="חג פסח" subtext="Passover 2021" />
+          <ImageCard to="/category/35"
+            className="w-h-100-p"
+            data={data.passover.childImageSharp.fixed} text='תפריט חג פסח' />
           <Divider hidden />
           <Title text="תפריט" subtext="Menu" />
           <Divider hidden />
