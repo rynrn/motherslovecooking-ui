@@ -5,7 +5,7 @@ import { storage } from "../services/local-storage.service"
 const initialState = {
   products: {},
   total: 0,
-  minimumTotal: 200
+  minimumTotal: 250
 };
 
 const isProductExist = (cart, productId) => !_.isEmpty(cart.products[productId]);
