@@ -282,10 +282,10 @@ const IndexPage = () => {
           <Divider hidden />
           {/* <Title text="שאלות נפוצות" subtext="Questions" /> */}
           {/* <Divider /> */}
-          <ImageCard to="/category/29"
+          {/* <ImageCard to="/category/29"
             className="thin pos-80"
             data={data.deals.childImageSharp.fixed} text='מבצעים ודילים' />
-          <Divider hidden />
+          <Divider hidden /> */}
           <Title text="הסטוריז שלנו" subtext="Our stories" />
           <Divider hidden />
           <Divider hidden />
