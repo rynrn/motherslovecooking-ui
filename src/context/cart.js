@@ -20,6 +20,7 @@ const getQuantity = (cart, productId) => {
 
 const addToCart = (state, action) => {
   const uid = action.variationId ? action.variationId : action.productId;
+  const quantity = isProductExist(state, action.productId) ? (getQuantity(state, action.productId) + 1) : 1
   const newState = {
     ...state,
     products: {
@@ -29,10 +30,18 @@ const addToCart = (state, action) => {
         id: uid,
         name: action.name,
         price: action.price,
-        quantity: isProductExist(state, action.productId) ? (getQuantity(state, action.productId) + 1) : 1
+        quantity
       }
     }
   };
+
+  // google conversion
+  gtag('event', 'conversion', {
+    'send_to': 'AW-1039718244/KfR2CNGljoACEOSu4-8D',
+    'value': action.price * quantity,
+    'currency': 'ILS'
+  });
+
   return {
     ...newState,
     total: getTotal(newState.products)
