@@ -244,11 +244,11 @@ const IndexPage = () => {
           showPlayButton={false} />
         <Container>
           <Divider hidden />
-          <Title text="חג פסח" subtext="Passover 2021" />
+          {/* <Title text="חג פסח" subtext="Passover 2021" />
           <ImageCard to="/category/35"
             className="w-h-100-p"
             data={data.passover.childImageSharp.fixed} text='תפריט חג פסח' />
-          <Divider hidden />
+          <Divider hidden /> */}
           <Title text="תפריט" subtext="Menu" />
           <Divider hidden />
           <Grid className="text-center">
