@@ -35,13 +35,6 @@ const addToCart = (state, action) => {
     }
   };
 
-  // google conversion
-  gtag('event', 'conversion', {
-    'send_to': 'AW-1039718244/KfR2CNGljoACEOSu4-8D',
-    'value': action.price * quantity,
-    'currency': 'ILS'
-  });
-
   return {
     ...newState,
     total: getTotal(newState.products)

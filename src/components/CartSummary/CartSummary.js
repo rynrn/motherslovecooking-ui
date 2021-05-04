@@ -19,7 +19,7 @@ const CartSummary = ({ total, minimumTotal, currency, orderCheckout }) => {
           </Grid.Row>
         </Grid>
         {
-          total > minimumTotal && <Checkout orderCheckout={orderCheckout} cart={total} />
+          total > minimumTotal && <Checkout orderCheckout={orderCheckout} total={total} />
         }
         {
           total < minimumTotal && <b><br />

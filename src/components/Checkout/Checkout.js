@@ -1,11 +1,23 @@
 import React from 'react';
 import { Form, Button, Divider } from 'semantic-ui-react';
 
-const Checkout = ({ orderCheckout }) => {
+const Checkout = ({ orderCheckout, total }) => {
+
+  function checkoutClick() {
+    // google conversion
+    gtag('event', 'conversion', {
+      'send_to': 'AW-1039718244/KfR2CNGljoACEOSu4-8D',
+      'value': total,
+      'currency': 'ILS'
+    });
+
+    orderCheckout();
+  }
+
   return (
     <Form>
       <Divider hidden />
-      <Button color="pink" fluid onClick={() => orderCheckout()}>
+      <Button color="pink" fluid onClick={() => checkoutClick()}>
         תשלום
       </Button>
     </Form>
