@@ -14,6 +14,24 @@ const ProductPage = ({ data }) => {
       <SEO title={`${data.product.name}`}
         keywords={`${data.product.name}, ${categories}, אוכל ביתי, מבשלת, עיקריות, תוספות, משלוחים`}
         description={`${description}, במחיר של ${price}${data.site.siteMetadata.currency}, ${categories}`} />
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `
+          {
+            "@context" : "http://schema.org",
+            "@type" : "Product",
+            "name" : ${data.product.name},
+            "image" :  ${data.product.images[0].src},
+            "description" : ${data.product.description},
+            "offers" : {
+            "@type" : "Offer",
+              "price" : ${data.product.price},
+              "priceCurrency": "NIS"
+            }
+          }
+        `,
+        }}
+      />
       <ProductDetails key={data.product.wordpress_id} {...data.product} id={data.product.wordpress_id} />
     </Layout>
   );

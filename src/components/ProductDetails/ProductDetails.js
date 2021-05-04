@@ -70,22 +70,19 @@ const ProductDetails = ({ name, price, images, id,
           />
         </div>
         <div className="product-details__content">
-          <div itemScope itemType="https://schema.org/Product">
-            <h1 className="product-details__header" itemProp="name">{name}</h1>
-            <div className="product-details__description" itemProp="description" dangerouslySetInnerHTML={{ __html: description }} />
-            <img itemProp="image" src={firstImage} alt={name} hidden aria-hidden="true" />
+          <div>
+            <h1 className="product-details__header">{name}</h1>
+            <div className="product-details__description" dangerouslySetInnerHTML={{ __html: description }} />
+            <img src={firstImage} alt={name} hidden aria-hidden="true" />
           </div>
           <Divider />
 
-          <div className="product-details__price" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+          <div className="product-details__price">
             <div hidden aria-hidden="true">
-              <meta itemProp="priceCurrency" content="NIS" />
-              <link itemProp="availability" href="https://schema.org/InStock" />
-              <meta itemProp="url" content={`${data.site.siteMetadata.siteUrl}/product/${id}`}></meta>
             </div>
             <span>מחיר: </span>
-            <span itemProp="priceCurrency" content="NIS">{data.site.siteMetadata.currency}</span>
-            <span itemProp="price" dangerouslySetInnerHTML={{ __html: price }} />
+            <span>{data.site.siteMetadata.currency}</span>
+            <span dangerouslySetInnerHTML={{ __html: price }} />
 
           </div>
 

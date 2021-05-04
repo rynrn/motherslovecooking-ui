@@ -8,13 +8,8 @@ import '../../utils/image-util';
 
 const ProductCard = ({ name, id, wordpress_id, price, short_description, src, currency, quantity,
   categories = [], add, decrement, isRelatedProduct = false }) => {
-  const cardAttr = isRelatedProduct ? {
-    itemProp: 'isRelatedTo',
-    itemScope: 'itemcope',
-    itemType: 'https://schema.org/Product'
-  } : {};
   return (
-    <Card centered className="component-card" {...cardAttr}>
+    <Card centered className="component-card">
       <Card.Content>
         <Grid>
           <Grid.Column width={5}>
