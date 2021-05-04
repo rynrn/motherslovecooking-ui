@@ -11,7 +11,7 @@ const Checkout = ({ orderCheckout, total }) => {
       'currency': 'ILS'
     });
 
-    orderCheckout();
+    setTimeout(orderCheckout, 200);
   }
 
   return (
