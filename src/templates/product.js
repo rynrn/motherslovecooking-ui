@@ -20,13 +20,18 @@ const ProductPage = ({ data }) => {
           {
             "@context" : "http://schema.org",
             "@type" : "Product",
-            "name" : ${data.product.name},
-            "image" :  ${data.product.images[0].src},
-            "description" : ${data.product.description},
+            "name" : "${data.product.name}",
+            "image" :  "${data.product.images[0].src}",
+            "description" : "${data.product.description.replace('<p>', '').replace('</p>', '')}",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "reviewCount": "${data.product.total_sales}"
+            },
             "offers" : {
-            "@type" : "Offer",
-              "price" : ${data.product.price},
-              "priceCurrency": "NIS"
+              "@type" : "Offer",
+              "price" : "${data.product.price}",
+              "priceCurrency": "NIS",
+              "availability": "https://schema.org/InStock"
             }
           }
         `,
@@ -52,6 +57,7 @@ export const query = graphql`
       stock_status
       description
       short_description
+      total_sales
       categories {
         wordpress_id
         name
