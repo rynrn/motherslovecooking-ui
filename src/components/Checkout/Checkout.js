@@ -8,7 +8,9 @@ const Checkout = ({ orderCheckout, total }) => {
     gtag('event', 'conversion', {
       'send_to': 'AW-1039718244/KfR2CNGljoACEOSu4-8D',
       'value': total,
-      'currency': 'ILS'
+      'currency': 'ILS',
+      'event_category': 'checkout',
+      'event_label': 'cart page button click',
     });
 
     setTimeout(orderCheckout, 200);
