@@ -152,7 +152,7 @@ const IndexPage = () => {
       avatar_salat: file(relativePath: { eq: "shutterstock_614151992.jpg" }) {
         ...avatarStoryItem
       }
-      passover: file(relativePath: { eq: "shutterstock_596740322.jpg" }) {
+      shavuot: file(relativePath: { eq: "shutterstock_1049547443.jpg" }) {
         ...menuBigItem
       }
     }
@@ -247,23 +247,23 @@ const IndexPage = () => {
           showPlayButton={false} />
         <Container>
           <Divider hidden />
-          {/* <Title text="חג פסח" subtext="Passover 2021" />
-          <ImageCard to="/category/35"
+          <Title text="חג שבועות" subtext="Shavuot 2021" />
+          <ImageCard to="/category/שבועות"
             className="w-h-100-p"
-            data={data.passover.childImageSharp.fixed} text='תפריט חג פסח' />
-          <Divider hidden /> */}
+            data={data.shavuot.childImageSharp.fixed} text='תפריט חג שבועות' />
+          <Divider hidden />
           <Title text="תפריט" subtext="Menu" />
           <Divider hidden />
           <Grid className="text-center">
             <Grid.Row columns={3}>
-              <ImageGridColumnCard text={'עיקריות'} to="/category/21" data={data.fish.childImageSharp.fixed} />
-              <ImageGridColumnCard text={'מיוחדים'} to="/category/15" data={data.wine.childImageSharp.fixed} />
-              <ImageGridColumnCard text={'תוספות'} to="/category/17" data={data.pasta.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'עיקריות'} to="/category/עיקריות" data={data.fish.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'מיוחדים'} to="/category/מיוחדים" data={data.wine.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'תוספות'} to="/category/תוספות" data={data.pasta.childImageSharp.fixed} />
             </Grid.Row>
             <Grid.Row columns={3}>
-              <ImageGridColumnCard text={'סלטים'} to="/category/27" data={data.salat.childImageSharp.fixed} />
-              <ImageGridColumnCard text={'מרקים'} to="/category/23" data={data.soup.childImageSharp.fixed} />
-              <ImageGridColumnCard text={'קינוחים'} to="/category/28" data={data.dessert.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'סלטים'} to="/category/סלטים" data={data.salat.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'מרקים'} to="/category/מרקים" data={data.soup.childImageSharp.fixed} />
+              <ImageGridColumnCard text={'קינוחים'} to="/category/אפייה" data={data.dessert.childImageSharp.fixed} />
             </Grid.Row>
           </Grid>
           <Divider hidden />

@@ -14,7 +14,7 @@ const ProductPage = ({ data }) => {
   const price = striptags(data.product.price);
   return (
     <Layout>
-      <SEO title={`אוכל ביתי משלוחים - ${data.product.name}`}
+      <SEO title={`משלוחי אוכל ביתי - ${data.product.name}`}
         keywords={`${data.product.name}, ${categories}, אוכל ביתי, מבשלת, עיקריות, תוספות, משלוחים`}
         description={`${description}, במחיר של ${price}${data.site.siteMetadata.currency}, ${categories}`} />
       <script type="application/ld+json"

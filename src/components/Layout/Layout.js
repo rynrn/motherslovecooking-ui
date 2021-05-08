@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
         <Footer />
         {!isCartPage &&
           <Link to="/cart">
-            <Button circular icon="cart" className="go-to-cart" />
+            <Button circular icon="cart" className="go-to-cart" aria-label="עגלת קניות" />
           </Link>
         }
       </div>

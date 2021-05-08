@@ -7,8 +7,8 @@ const NotFoundPage = () => {
   usePageview();
   return (
     <Layout>
-      <h1>דף לא נמצא</h1>
-      <p>הגעת לדף שכבר לא קיים</p>
+      <h1 style={{ textAlign: 'center' }}>דף לא נמצא</h1>
+      <p style={{ textAlign: 'center' }}>הגעת לדף שכבר לא קיים</p>
     </Layout>
   )
 }
