@@ -12,7 +12,7 @@ import { getQuantity, getProductImage, getProductImages } from '../../utils/prod
 import { useCart } from '../../context/cart';
 
 const ProductDetails = ({ name, price, images, id,
-  related_products = [], description, short_description, categories = [] }) => {
+  related_products = [], description, slug, short_description, categories = [] }) => {
   const [cart, dispatch] = useCart();
 
   const data = useStaticQuery(graphql`
@@ -95,8 +95,8 @@ const ProductDetails = ({ name, price, images, id,
           <h2>קטגוריות</h2>
 
           <ul className="product-details__meta">
-            {categories.map(({ name, wordpress_id }) => <li key={wordpress_id}>
-              <Link to={`/category/${wordpress_id}`}>{name}</Link>
+            {categories.map(({ name, wordpress_id, slug }) => <li key={wordpress_id}>
+              <Link to={`/category/${slug}`}>{name}</Link>
             </li>)}
           </ul>
 

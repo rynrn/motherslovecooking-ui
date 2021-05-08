@@ -6,19 +6,19 @@ import CircularImage from '../CircularImage';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import '../../utils/image-util';
 
-const ProductCard = ({ name, id, wordpress_id, price, short_description, src, currency, quantity,
+const ProductCard = ({ name, id, wordpress_id, price, slug, short_description, src, currency, quantity,
   categories = [], add, decrement, isRelatedProduct = false }) => {
   return (
     <Card centered className="component-card">
       <Card.Content>
         <Grid>
           <Grid.Column width={5}>
-            <Link to={'/product/' + (id || wordpress_id)}>
+            <Link to={'/product/' + slug} >
               <CircularImage src={src} />
             </Link>
           </Grid.Column>
           <Grid.Column width={11}>
-            <Link to={'/product/' + (id || wordpress_id)}>
+            <Link to={'/product/' + slug}>
               <Card.Header as="h3" className="break-words">{name}</Card.Header>
             </Link>
             <Card.Meta className="meta-card">

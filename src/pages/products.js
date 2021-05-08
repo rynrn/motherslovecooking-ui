@@ -6,8 +6,11 @@ import ProductCardContainer from '../containers/ProductCardContainer/ProductCard
 import { Header, Input, Button } from 'semantic-ui-react';
 import Layout from "../components/Layout/Layout"
 import * as queryString from "query-string";
+import { usePageview } from "../hooks/anaytics"
 
 const ProductsPage = ({ data, location }) => {
+  usePageview();
+
   const { q = '' } = queryString.parse(location.search);
 
   const [search, setSearch] = useState(q);
@@ -48,6 +51,7 @@ const ProductsPage = ({ data, location }) => {
           _.map(products, (product) =>
             <ProductCardContainer key={product.wordpress_id}
               id={product.wordpress_id}
+              slug={product.slug}
               name={product.name}
               short_description={product.short_description}
               categories={product.categories}
@@ -65,6 +69,7 @@ export const query = graphql`
   query ProductsPageQuery {
     products: allWcProducts {
       nodes {
+        slug
         wordpress_id
         name
         price

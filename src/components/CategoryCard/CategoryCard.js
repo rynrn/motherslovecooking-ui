@@ -5,11 +5,11 @@ import CircularImage from '../../components/CircularImage';
 
 import './styles.css';
 
-const CategoryCard = ({ id, image, name }) => (
+const CategoryCard = ({ id, slug, image, name }) => (
   <Card>
     <Card.Content>
       {image && image.src && (
-        <Link to={'/category/' + id}>
+        <Link to={'/category/' + slug}>
           <CircularImage src={image.src} />
         </Link>
       )}
@@ -17,7 +17,7 @@ const CategoryCard = ({ id, image, name }) => (
         <Card.Header as={Header} className="break-words">
           {name}
         </Card.Header>
-        <Link to={'/category/' + id}>
+        <Link to={'/category/' + slug}>
           <Button color="pink" compact>
             הצג מוצרים &gt;
               </Button>

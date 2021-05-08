@@ -4,9 +4,12 @@ import { Divider, Container } from 'semantic-ui-react';
 import SEO from '../components/seo';
 import Title from '../components/Title/Title';
 import Layout from "../components/Layout/Layout"
+import { usePageview } from "../hooks/anaytics"
 import '../utils/image-util';
 
 const AboutMePage = () => {
+  usePageview();
+
   const data = useStaticQuery(graphql`
     query AboutMePageQuery {
       boss: file(relativePath: { eq: "shutterstock_1112366681.jpg" }) {

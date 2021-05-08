@@ -4,8 +4,11 @@ import CategoryCard from '../components/CategoryCard/CategoryCard';
 import SEO from '../components/seo';
 import { Card } from 'semantic-ui-react';
 import Layout from "../components/Layout/Layout"
+import { usePageview } from "../hooks/anaytics"
 
 const CategoriesPage = () => {
+  usePageview();
+
   const data = useStaticQuery(graphql`
     query CategoriesQuery {
       categories: allWcProductsCategories {
@@ -33,7 +36,7 @@ const CategoriesPage = () => {
       <Card.Group itemsPerRow={2} className="categories-list">
         {
           data.categories.edges.map(({ node }) =>
-            <CategoryCard key={node.id} id={node.wordpress_id} name={node.name} image={node.image} />
+            <CategoryCard key={node.id} id={node.wordpress_id} slug={node.slug} name={node.name} image={node.image} />
           )
         }
       </Card.Group>

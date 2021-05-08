@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   resultCategoriesQuery.data.categories.edges.forEach(category => {
     createPage({
-      path: `/category/${category.node.wordpress_id}`,
+      path: decodeURIComponent(`/category/${category.node.slug}`),
       component: categoryPageTemplate,
       context: {
         id: category.node.wordpress_id,
@@ -72,7 +72,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   resultCreateProductQuery.data.products.edges.forEach(product => {
     createPage({
-      path: `/product/${product.node.wordpress_id}`,
+      path: decodeURIComponent(`/product/${product.node.slug}`),
       component: productPageTemplate,
       context: {
         id: product.node.wordpress_id,

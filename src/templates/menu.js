@@ -6,11 +6,14 @@ import SEO from '../components/seo';
 import Title from '../components/Title/Title';
 import Layout from "../components/Layout/Layout"
 import ReactPaginate from 'react-paginate';
+import { usePageview } from "../hooks/anaytics"
 import '../utils/image-util';
 
 const chunkCount = 10;
 
 const ManuPage = ({ data }) => {
+  usePageview();
+
   const [page, setPage] = useState(0);
   const { wcProductsCategories } = data;
   const { products = [], categoryName } = wcProductsCategories;

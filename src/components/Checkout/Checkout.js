@@ -13,6 +13,14 @@ const Checkout = ({ orderCheckout, total }) => {
       'event_label': 'cart page button click',
     });
 
+    gtag('event', 'click', {
+      'send_to': 'UA-124323639-1',
+      'value': total,
+      'currency': 'ILS',
+      'event_category': 'checkout',
+      'event_label': 'cart page button click',
+    });
+
     setTimeout(orderCheckout, 200);
   }
 

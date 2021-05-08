@@ -5,9 +5,12 @@ import SEO from "../components/seo"
 import Layout from "../components/Layout/Layout"
 import CartProductContainer from "../containers/CartProductContainer/CartProductContainer"
 import CartSummaryContainer from "../containers/CartSummaryContainer/CartSummaryContainer"
+import { usePageview } from "../hooks/anaytics"
 import '../utils/image-util';
 
 const CartPage = () => {
+  usePageview();
+
   const data = useStaticQuery(graphql`
     query CartCurrencyQuery {
       site {

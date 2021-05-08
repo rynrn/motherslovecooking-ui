@@ -10,6 +10,7 @@ import SEO from '../components/seo';
 import Title from '../components/Title/Title';
 import Layout from "../components/Layout/Layout"
 import '../utils/image-util';
+import { usePageview } from "../hooks/anaytics"
 
 const heroText = (index) => {
   if (index === 1) {
@@ -34,6 +35,8 @@ const heroText = (index) => {
 }
 
 const IndexPage = () => {
+  usePageview();
+
   const data = useStaticQuery(graphql`
     query IndexPageQuery {
       hero1: file(relativePath: { eq: "shutterstock_757818340.jpg" }) {

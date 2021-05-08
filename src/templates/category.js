@@ -6,11 +6,14 @@ import SEO from "../components/seo"
 import Layout from "../components/Layout/Layout"
 import { back } from '../utils/page-util';
 import ProductCardContainer from '../containers/ProductCardContainer/ProductCardContainer';
+import { usePageview } from "../hooks/anaytics"
 
 const CategoriesPage = ({ data }) => {
+  usePageview();
+
   return (
     <Layout>
-      <SEO title={data.category.name}
+      <SEO title={`אוכל ביתי משלוחים - ${data.category.name}`}
         keywords={`${data.category.name}, אוכל ביתי, מבשלת, עיקריות, תוספות, משלוחים`}
         description={`${data.category.name}, ועוד מנות מחכות לך באתר, פשוט להזמין וזה מגיע אליך עם המון אהבה`} />
       <Header as="h1" textAlign="center" className="products-list-header">{data.category.name}</Header>
@@ -27,6 +30,7 @@ const CategoriesPage = ({ data }) => {
           _.map(data.category.products, (node) =>
             <ProductCardContainer key={node.wordpress_id}
               id={node.wordpress_id}
+              slug={node.slug}
               name={node.name}
               short_description={node.short_description}
               categories={node.categories}
@@ -45,6 +49,7 @@ export const query = graphql`
     category: wcProductsCategories(wordpress_id: {eq: $id}) {
       name
       products {
+        slug
         wordpress_id
         name
         price

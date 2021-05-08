@@ -4,14 +4,17 @@ import { graphql } from "gatsby"
 import SEO from '../components/seo';
 import ProductDetails from '../components/ProductDetails/ProductDetails';
 import Layout from "../components/Layout/Layout"
+import { usePageview } from "../hooks/anaytics"
 
 const ProductPage = ({ data }) => {
+  usePageview();
+
   const categories = data.product.categories.map((cat) => cat.name).join(', ');
   const description = striptags(data.product.description);
   const price = striptags(data.product.price);
   return (
     <Layout>
-      <SEO title={`${data.product.name}`}
+      <SEO title={`אוכל ביתי משלוחים - ${data.product.name}`}
         keywords={`${data.product.name}, ${categories}, אוכל ביתי, מבשלת, עיקריות, תוספות, משלוחים`}
         description={`${description}, במחיר של ${price}${data.site.siteMetadata.currency}, ${categories}`} />
       <script type="application/ld+json"
@@ -51,6 +54,7 @@ export const query = graphql`
     }
     product: wcProducts(wordpress_id: {eq: $id}) {
       wordpress_id
+      slug
       name
       price
       backorders_allowed
@@ -61,12 +65,14 @@ export const query = graphql`
       categories {
         wordpress_id
         name
+        slug
       }
       images {
         src
       }
       related_products {
         wordpress_id
+        slug
         name
         price
         backorders_allowed
