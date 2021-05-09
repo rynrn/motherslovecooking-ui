@@ -61,5 +61,13 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "WPGraphQL",
+        fieldName: "wpcontent",
+        url: "https://ordering.motherslovecooking.co.il/graphql",
+      },
+    },
   ],
 }

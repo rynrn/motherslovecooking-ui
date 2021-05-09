@@ -80,4 +80,43 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   });
 
+  // Create Recipes pages
+  const resultCreateRecipesQuery = await graphql(`
+    query RecipesPostsQuery {
+      wpcontent {
+        posts {
+          nodes {
+            slug
+            id
+            categories {
+              nodes {
+                categoryId
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (resultCreateRecipesQuery.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query (productPageTemplate).`)
+    return
+  }
+
+  const allPosts = resultCreateRecipesQuery.data.wpcontent.posts.nodes;
+  const allRecipesPosts = allPosts.filter(post => {
+    const found = post.categories.nodes.find(cat => cat.categoryId === 47);
+    return !!found;
+  })
+  allRecipesPosts.forEach(post => {
+    createPage({
+      path: decodeURIComponent(`/recipes/${post.slug}`),
+      component: path.resolve('./src/templates/recipes.js'),
+      context: {
+        id: post.id,
+      },
+    })
+  });
+
 }
