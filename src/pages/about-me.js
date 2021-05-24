@@ -6,6 +6,7 @@ import Title from '../components/Title/Title';
 import Layout from "../components/Layout/Layout"
 import { usePageview } from "../hooks/anaytics"
 import '../utils/image-util';
+import ContactForm from '../components/ContactForm/ContactForm';
 
 const AboutMePage = () => {
   usePageview();
@@ -94,6 +95,7 @@ const AboutMePage = () => {
             בין אם להורים עסוקים או משפחות שרוצות לפנק את עצמן ובין לכאלו שאין להם את הידע.
           </p>
           <Divider hidden />
+          <ContactForm />
         </Container>
       </div>
     </Layout>
