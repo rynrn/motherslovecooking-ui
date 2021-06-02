@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import { isBrowser } from "react-device-detect";
 import { Divider, Grid, Container } from 'semantic-ui-react';
 import ImageGallery from 'react-image-gallery';
 import ImageGridColumnCard from '../components/ImageCard/ImageGridColumnCard';
-import Story from '../components/Story/Story';
+import ContactForm from '../components/ContactForm/ContactForm';
 import StoryAvatar from '../components/StoryAvatar/StoryAvatar';
 import ImageCard from '../components/ImageCard/ImageCard';
 import SEO from '../components/seo';
@@ -16,8 +17,8 @@ const heroText = (index) => {
   if (index === 1) {
     return (
       <div>
-        <h1>מאמא באהבה</h1>
-        <span>אוכל ביתי ומשלוחים עד הבית</span>
+        <h1>תתפנקו גם לכם מגיע</h1>
+        <span>אוכל ביתי לשבת ואמצע שבוע עם משלוח עד הבית</span>
       </div>
     )
   } else if (index === 2) {
@@ -206,8 +207,18 @@ const IndexPage = () => {
     <Layout>
       <SEO title="בישול ביתי של אמא עם משלוח עד הבית"
         description="מבשלת אוכל ביתי לאנשים שאוהבים לאכול. אוכל לסופי שבוע ואמצע שבוע בשליחות עד אליך" />
-      <div style={{ height: '100%' }}>
+      <div className={isBrowser ? 'home-browser' : 'home-mobile'} style={{ height: '100%' }}>
         <style>{`
+            #browser-menu {
+              background: transparent;
+              position: absolute;
+            }
+            #browser-menu .ui.text.menu .item,
+            #browser-menu #cart-button-menu .item {
+              color: #fff;
+              text-shadow: 0 0 2px black;
+            }
+
             #layout .pusher .nav-bar {
               background: transparent !important;
               position: absolute;
@@ -221,22 +232,53 @@ const IndexPage = () => {
               color: var(--main-color)
             }
 
+            .home-browser h1 {
+              font-size: 48px;
+            }
+
+            .home-browser .image-gallery-slide .image-gallery-description {
+              font-size: 30px;
+            }
+
             h1 {
               font-size: 35px;
             }
 
             .image-gallery-slide .image-gallery-description {
-              bottom: 5%;
-              left: 50%;
-              background: transparent;
+              /*bottom: 5%;
+              left: 50%;*/
+              bottom: 45%;
+              left: 65%;
               font-size: 20px;
               transform: translate(-50%, -30%);
               font-family: 'Heebo', sans-serif;
               font-weight: 300;
               text-shadow: 0px 0px 1px #000;
-              background: rgba(0,0,0,0.3);
+              /*background: rgba(0,0,0,0.3);*/
+              background: transparent;
+              color: var(--main-color);
               border-radius: 30px;
               padding: 10px;
+            }
+
+            @media (max-width: 1200px) {
+              .home-browser h1 {
+                font-size: 25px;
+              }
+
+              .home-browser .image-gallery-slide .image-gallery-description {
+                font-size: 18px;
+              }
+
+              .image-gallery-slide .image-gallery-description {
+                bottom: 50%;
+              }
+            }
+
+            @media (max-height: 500px) {
+              .image-gallery-slide .image-gallery-description {
+                bottom: 35%;
+              }
             }
           `}</style>
         <ImageGallery items={hero}
@@ -246,11 +288,11 @@ const IndexPage = () => {
           showFullscreenButton={false}
           showPlayButton={false} />
         <Container>
-          <Divider hidden />
+          {/* <Divider hidden />
           <Title text="חג שבועות" subtext="Shavuot 2021" />
           <ImageCard to="/category/שבועות"
             className="w-h-100-p"
-            data={data.shavuot.childImageSharp.fixed} text='תפריט חג שבועות' />
+            data={data.shavuot.childImageSharp.fixed} text='תפריט חג שבועות' /> */}
           <Divider hidden />
           <Title text="תפריט" subtext="Menu" />
           <Divider hidden />
@@ -272,16 +314,51 @@ const IndexPage = () => {
             data={data.delivery.childImageSharp.fixed} text='להזמנת אוכל ביתי עד הבית' />
           <Divider />
           <Title text="איזורי משלוח" subtext="Delivery zones" />
-          <Grid className="text-center">
+          <div className="home-delivery-zones site-font text-right" dir="rtl">
+            מאמא באהבה מפעילה מערך משלוחים במרכז הארץ.
+            <br />
+            איזורי המשלוחים שלנו הם בין ראשון לציון שהוא הגבול הדרומי שלנו לגבול הצפוני ביותר שהוא הרצליה.
+            <br />
+            מידי פעם גם תוכלו למצוא אותנו מגיעים גם לרחובות נתניה ואפילו למודיעין. את זה כמובן שנעדכן באינסטגרם שלנו.
+            <br />
+            תוכלו למצוא אותנו מגיעים בעיקר לערים:
+            <ul>
+              <li>פתח תקווה</li>
+              <li>קריית אונו והסביבה</li>
+              <li>יהוד ואור יהודה</li>
+              <li>סביון</li>
+              <li>הרצליה</li>
+              <li>רעננה</li>
+              <li>כפר סבא</li>
+              <li>תל אביב</li>
+              <li>רמת גן</li>
+              <li>גבעתיים</li>
+              <li>רמת השרון</li>
+              <li>הוד השרון</li>
+              <li>ראש העין</li>
+              <li>יפו</li>
+              <li>בת ים</li>
+              <li>חולון</li>
+              <li>ראשון לציון</li>
+            </ul>
+            <div className="clear"></div>
+            <br />
+            מדי פעם אנחנו מגיעים גם לרחובות ונתניה, ולפעמים גם עד אשדוד. אנחנו מנסים לענות לכל האתגרים הרחוקים האלו שאתם מבקשים באינסטגרם.
+            <br />
+            עקב הביקוש הרב, כרגע לא נגיע לחיפה וירושלים.
+          </div>
+          {/* <Grid className="text-center">
             <Grid.Row columns={3}>
               <ImageGridColumnCard text={'איזורי משלוחים - דרום'} src={data.south.childImageSharp.fixed.src} />
               <ImageGridColumnCard text={'איזורי משלוחים - מרכז'} src={data.center.childImageSharp.fixed.src} />
               <ImageGridColumnCard text={'איזורי משלוחים - צפון'} src={data.north.childImageSharp.fixed.src} />
             </Grid.Row>
-          </Grid>
+          </Grid> */}
           <Divider />
           <Title text="מי אני" subtext="About me" />
           <ImageCard to="/about-me" className="w-h-100-p" data={data.boss.childImageSharp.fixed} text='מי אני' shouldHideText={true} />
+          <Divider />
+          <ContactForm formOnly />
           <Divider hidden />
           {/* <Title text="שאלות נפוצות" subtext="Questions" /> */}
           {/* <Divider /> */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "gatsby"
 import { Sidebar, Menu, Icon, Header } from 'semantic-ui-react';
+import { siteMenu } from '../../constants/app.constants';
 
 const SideMenu = (props) => (
   <Sidebar
@@ -18,7 +19,16 @@ const SideMenu = (props) => (
     <Header as="h2" inverted>
       תפריט
     </Header>
-    <Link to="/" onClick={props.closeMenu}>
+    {siteMenu.map((item, index) => {
+      return (
+        <Link key={index} to={item.path} onClick={props.closeMenu}>
+          <Menu.Item name={item.itemName}>
+            <Icon name={item.icon} />{item.name}
+          </Menu.Item>
+        </Link>
+      );
+    })}
+    {/* <Link to="/" onClick={props.closeMenu}>
       <Menu.Item name="home">
         <Icon name="home" />בית
       </Menu.Item>
@@ -37,7 +47,7 @@ const SideMenu = (props) => (
       <Menu.Item name="ordering">
         <Icon name="shopping basket" />עגלת קניות
       </Menu.Item>
-    </Link>
+    </Link> */}
     {/*
     <Menu.Item name="service">
       <Icon name="setting" />Customer Service

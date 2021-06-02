@@ -3,10 +3,10 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Divider, Container } from 'semantic-ui-react';
 import SEO from '../components/seo';
 import Title from '../components/Title/Title';
+import ContactForm from '../components/ContactForm/ContactForm';
 import Layout from "../components/Layout/Layout"
 import { usePageview } from "../hooks/anaytics"
 import '../utils/image-util';
-import ContactForm from '../components/ContactForm/ContactForm';
 
 const AboutMePage = () => {
   usePageview();
@@ -77,8 +77,12 @@ const AboutMePage = () => {
               margin-left: 20px;
             }
           `}</style>
-        <div className="hero-image"></div>
+        {/* <div className="hero-image"></div> */}
         <Container>
+          <Divider hidden />
+          <Divider hidden />
+          <Divider hidden />
+          <Divider hidden />
           <Divider hidden />
           <Title text="על הבוסית" subtext="About the boss" />
           <Divider hidden />
@@ -88,11 +92,18 @@ const AboutMePage = () => {
             מי אני?
             <br />
             נעים מאד, אני ריקי אביסרור ואני שמחה שהגעתם לבקר אצלי!
+            <br /><br />
             גדלתי בבית של אמא טוניסאית ואבא פרסי, בית אותנטי שמתעסק המון באוכל, סבתי היא בשלנית בחסד עליון.
             מדי יום כשהייתי שבה מבית הספר לאחר יום הלימודים הביתה, הייתי יושבת איתה במטבח ומביטה בה מבשלת על אף היותי תלמידה.
+            <br /><br />
             עם הזמן, כשגדלתי ולימים הכרתי את בעלי, התחתנו והבאנו לעולם את בתי הבכורה.
             מצאתי את עצמי אובדת עצות במטבח בשל היותה בררנית, מתקשרת לסבתי ומבקשת ממנה מתכונים והוראות מדוייקות. לאחר לידתה של בתי השניה, הרגשתי שיש יותר מדיי עומס על אמהות, ולכן מתוך צורך אישי שלי כאמא עסוקה שלא מצאה את הזמן גם לבשל, גם לנקות ולסיים את שאר מטלות הבית, הבנתי שיש פה צורך לבישול ביתי אמיתי שיגיע עד הבית ללא שום מאמץ.
             בין אם להורים עסוקים או משפחות שרוצות לפנק את עצמן ובין לכאלו שאין להם את הידע.
+            <br /><br />
+            והיום אני בעלת עסק מצליח מאוד ששולח ארוחות שבת ואמצע שבוע ללקוחות שלי בכל איזור המרכז ואפילו יותר מזה.
+            <br /><br />
+            משתדלת לא להגיד ״לא״ ללקוחות שרוצים שאגיע גם לאיזורים רחוקים יותר.
+            שירות הלקוח הוא לדעתי ערך עליון וזה מה שאני שמה לגבי עיניי כאשר כל אחת ואחד מכם עושה ממני הזמנה.
           </p>
           <Divider hidden />
           <ContactForm />

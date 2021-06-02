@@ -29,7 +29,7 @@ h2, h4, h6 {
 }
 
 .head-link a {
-  color: #fff;
+  color: var(--main-color);
 }
 
 .font-weight-100 {
@@ -47,6 +47,14 @@ h2, h4, h6 {
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .img-center {
@@ -118,4 +126,18 @@ h2, h4, h6 {
 .big-menu-card .img-text {
   font-size: 30px;
   padding: 20px;
+}
+
+.site-font {
+  font-family: 'Heebo', sans-serif !important;
+  font-weight: 100 !important;
+}
+
+.home-delivery-zones li {
+  float: right;
+  padding-left: 25px;
+}
+
+.clear {
+  clear: both;
 }

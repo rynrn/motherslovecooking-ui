@@ -5,21 +5,23 @@ const Checkout = ({ orderCheckout, total }) => {
 
   function checkoutClick() {
     // google conversion
-    gtag('event', 'conversion', {
-      'send_to': 'AW-1039718244/KfR2CNGljoACEOSu4-8D',
-      'value': total,
-      'currency': 'ILS',
-      'event_category': 'checkout',
-      'event_label': 'cart page button click',
-    });
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-1039718244/KfR2CNGljoACEOSu4-8D',
+        'value': total,
+        'currency': 'ILS',
+        'event_category': 'checkout',
+        'event_label': 'cart page button click',
+      });
 
-    gtag('event', 'click', {
-      'send_to': 'UA-124323639-1',
-      'value': total,
-      'currency': 'ILS',
-      'event_category': 'checkout',
-      'event_label': 'cart page button click',
-    });
+      window.gtag('event', 'click', {
+        'send_to': 'UA-124323639-1',
+        'value': total,
+        'currency': 'ILS',
+        'event_category': 'checkout',
+        'event_label': 'cart page button click',
+      });
+    }
 
     setTimeout(orderCheckout, 200);
   }

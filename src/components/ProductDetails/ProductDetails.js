@@ -51,8 +51,8 @@ const ProductDetails = ({ name, price, images, id,
 
   const productImages = getProductImages(images, data.placeholder.childImageSharp.fixed.src);
   let firstImage = _.head(productImages);
-  firstImage = _.get(firstImage, 'original')
-
+  firstImage = _.get(firstImage, 'original');
+  const otherImages = _.tail(productImages).map(i => i.original);
   return (
     <div className="view-component product-details">
       <div className="product-details__breadcrumbs">
@@ -60,20 +60,24 @@ const ProductDetails = ({ name, price, images, id,
       </div>
       <div className="product-details__details-wrapper">
         <div className="product-details__image-galery">
-          <ImageGallery
+          {/* <ImageGallery
             items={productImages}
             slideDuration={550}
             showPlayButton={false}
             showThumbnails={false}
+            useBrowserFullscreen={false}
+            isRTL={true}
             showNav={isOnLine}
             disableSwipe={!isOnLine}
-          />
+          /> */}
+          <img className="the-image" src={firstImage} alt={name} />
+          {otherImages.map(img => <img className="small-image" src={img} alt={name} />)}
         </div>
         <div className="product-details__content">
           <div>
             <h1 className="product-details__header">{name}</h1>
             <div className="product-details__description" dangerouslySetInnerHTML={{ __html: description }} />
-            <img src={firstImage} alt={name} hidden aria-hidden="true" />
+            {/* <img src={firstImage} alt={name} hidden aria-hidden="true" /> */}
           </div>
           <Divider />
 

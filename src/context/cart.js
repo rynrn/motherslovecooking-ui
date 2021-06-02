@@ -5,10 +5,13 @@ import { storage } from "../services/local-storage.service"
 const initialState = {
   products: {},
   total: 0,
-  minimumTotal: 250
+  minimumTotal: 250,
+  totalProductsQuantity: 0
 };
 
 const isProductExist = (cart, productId) => !_.isEmpty(cart.products[productId]);
+const getIncreasedTotalQty = (state) => state.totalProductsQuantity ? (state.totalProductsQuantity + 1) : 1;
+const getDecreasedTotalQty = (state) => state.totalProductsQuantity ? (state.totalProductsQuantity - 1) : 0;
 
 const getQuantity = (cart, productId) => {
   let quantity = 0;
@@ -23,6 +26,7 @@ const addToCart = (state, action) => {
   const quantity = isProductExist(state, action.productId) ? (getQuantity(state, action.productId) + 1) : 1
   const newState = {
     ...state,
+    totalProductsQuantity: getIncreasedTotalQty(state),
     products: {
       ...state.products,
       [action.productId]: {
@@ -44,6 +48,7 @@ const addToCart = (state, action) => {
 const increasProductQuantity = (state, action) => {
   const newState = {
     ...state,
+    totalProductsQuantity: getIncreasedTotalQty(state),
     products: {
       ...state.products,
       [action.productId]: {
@@ -63,6 +68,7 @@ const decreasProductQuantity = (state, action) => {
   if (state.products[action.productId] && state.products[action.productId].quantity > decreasLimit) {
     const newState = {
       ...state,
+      totalProductsQuantity: getDecreasedTotalQty(state),
       products: {
         ...state.products,
         [action.productId]: {
@@ -85,6 +91,7 @@ const removeProductFromCart = (state, action) => {
   delete state.products[action.productId];
   const newState = {
     ...state,
+    totalProductsQuantity: getDecreasedTotalQty(state),
     products: { ...state.products }
   }
 

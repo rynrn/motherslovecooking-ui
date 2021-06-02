@@ -11,6 +11,23 @@
 .pink-strip a {
   color: #676767;
   text-decoration: none;
+
+  font-family: 'Heebo', sans-serif !important;
+  font-weight: 100 !important;
 }
 
+.pink-strip .link-list {
+  padding: 0;
+  text-align: right;
+  flex-direction: column;
+  display: flex;
+  list-style: none;
+}
+.pink-strip .three.column.row {
+  justify-content: space-between;
+}
 
+.center-footer-links {
+  max-width: 700px;
+  margin: 0 auto !important;
+}

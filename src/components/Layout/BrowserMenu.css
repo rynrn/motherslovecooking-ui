@@ -1,0 +1,67 @@
+#browser-menu {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: inherit;
+  background: var(--main-color);
+  color: #fff;
+  top: 0;
+  margin: 0;
+  padding: 0 16px;
+  display: flex;
+}
+
+#browser-menu .ui.text.menu {
+  flex: 1;
+}
+
+#browser-menu .ui.text.menu > a {
+  align-self: center;
+}
+
+#browser-menu .ui.text.menu a.active {
+  text-decoration: underline;
+  color: #fff;
+}
+
+#browser-menu .ui.text.menu .item {
+  color: #fff;
+}
+
+#logo-link {
+  flex: 1;
+  justify-content: start;
+  align-self: center;
+}
+
+#cart-button-menu {
+  width: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#cart-button-menu .item {
+  font-size: 1.5em;
+  color: #fff;
+  position: relative;
+}
+
+#cart-button-menu .item .cart-number{
+  background-color: rgb(255, 19, 19);
+  position: absolute;
+  top: -1px;
+  right: -4px;
+  height: 13px;
+  width: 13px;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  transition: background-color 0.2s linear 0s;
+  z-index: 1;
+  font-family: arial;
+  font-size: 10px;
+  text-align: center;
+  line-height: 13px;
+  box-shadow: rgb(103 103 103) 0px 1px 1px 0px;
+}

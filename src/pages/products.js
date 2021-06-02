@@ -3,7 +3,7 @@ import _ from "lodash"
 import { graphql } from "gatsby"
 import SEO from '../components/seo';
 import ProductCardContainer from '../containers/ProductCardContainer/ProductCardContainer';
-import { Header, Input, Button } from 'semantic-ui-react';
+import { Header, Input, Button, Divider } from 'semantic-ui-react';
 import Layout from "../components/Layout/Layout"
 import * as queryString from "query-string";
 import { usePageview } from "../hooks/anaytics"
@@ -34,7 +34,7 @@ const ProductsPage = ({ data, location }) => {
 
   return (
     <Layout>
-      <SEO title="כל המנות והמוצרים"
+      <SEO title="הזמנת משלוחים של אוכל ביתי"
         keywords="אוכל ביתי, כל המוצרים, משלוחים עד הבית, אוכל לסופש"
         description="אוכל ביתי לפי הזמנה, עושים הזמנה בוחרים תאריך ונהנים מאוכל מעולה" />
       <Header textAlign="center" className="products-list-header">מוצרים</Header>
@@ -46,6 +46,7 @@ const ProductsPage = ({ data, location }) => {
           aria-label="חיפוש מנות באתר" />
         <Button icon='search' onClick={() => handleClick()} />
       </div>
+      <Divider hidden />
       <div className="products-grid">
         {
           _.map(products, (product) =>
