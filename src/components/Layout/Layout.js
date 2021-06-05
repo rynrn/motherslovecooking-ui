@@ -18,6 +18,7 @@ const Layout = ({ children }) => {
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
   const isCartPage = pathname === '/cart';
   const { isMobile } = useDeviceDetect();
+  const [isMenuOpen, setMenu] = useState(false);
 
   const data = useStaticQuery(graphql`
     query LayoutSiteTitleQuery {
@@ -41,7 +42,6 @@ const Layout = ({ children }) => {
     );
   }
   else {
-    const [isMenuOpen, setMenu] = useState(false);
     return (
       <CartProvider>
         <div id="layout" className="is-mobile" style={{ height: '100%' }}>
