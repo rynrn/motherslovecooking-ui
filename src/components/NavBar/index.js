@@ -15,7 +15,7 @@ const getCartItems = (products) => {
   return count;
 }
 
-const NavBar = ({ title, openMenu }) => {
+const NavBar = ({ title, openMenu, isMenuOpen }) => {
   const [cart] = useCart(false);
   const [isSearchVisible] = useState(false);
   const [toSearchPage] = useState(false);
@@ -31,6 +31,10 @@ const NavBar = ({ title, openMenu }) => {
       }
     }
   `)
+
+  if (isMenuOpen) {
+    return null;
+  }
 
   return (
     <Segment basic color="pink" inverted size="small" className="nav-bar">
@@ -48,31 +52,8 @@ const NavBar = ({ title, openMenu }) => {
           size='tiny' circular bordered alt={title} />
       </Link>
       <Menu fluid secondary>
-        {/* <Menu.Item fitted>
-          {isSearchVisible &&
-            <Form onSubmit={handleSubmit}>
-              <Input
-                id="search"
-                name="search"
-                type="text"
-                className="search"
-                value={searchValue}
-                // onChange={setSearchValue}
-                placeholder="חיפוש..."
-                autoFocus
-                icon="search"
-              />
-            </Form>
-          }
-        </Menu.Item> */}
         <Menu.Item position="left" fitted>
           <Menu.Item fitted>
-            {/* {isSearchVisible === false ?
-              <Button icon="search" circular size="big" onClick={() => setSearchVisiblity(true)} />
-              : null}
-            {isSearchVisible &&
-              <Icon name="close" size="large" className="shop-icon" onClick={() => setSearchVisiblity(false)} />
-            } */}
             <Icon.Group>
               <Link to="/cart" className="cart-link">
                 <Icon name="cart" size="large" className="shop-icon" />
@@ -101,7 +82,6 @@ const NavBar = ({ title, openMenu }) => {
           <Icon name="content" size="large" onClick={openMenu} className="hamburger shop-icon" />
         </Menu.Item>
       </Menu>
-      {/* {toSearchPage !== false && isSearchVisible ? <Redirect to={`/search/${toSearchPage}`} /> : null} */}
     </Segment>
   );
 }

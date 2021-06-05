@@ -45,19 +45,19 @@ const Layout = ({ children }) => {
     return (
       <CartProvider>
         <div id="layout" className="is-mobile" style={{ height: '100%' }}>
+          <NavBar title={data.site.siteMetadata.title} isMenuOpen={isMenuOpen} openMenu={() => setMenu(!isMenuOpen)} />
           <Sidebar.Pushable>
             <SideMenu isVisible={isMenuOpen} closeMenu={() => setMenu(false)} />
             <Sidebar.Pusher dimmed={isMenuOpen} onClick={() => isMenuOpen && setMenu(false)}>
-              <NavBar title={data.site.siteMetadata.title} openMenu={() => setMenu(true)} />
               {children}
+              <Footer />
+              {!isCartPage &&
+                <Link to="/cart">
+                  <Button circular icon="cart" className="go-to-cart" aria-label="עגלת קניות" />
+                </Link>
+              }
             </Sidebar.Pusher>
           </Sidebar.Pushable>
-          <Footer />
-          {!isCartPage &&
-            <Link to="/cart">
-              <Button circular icon="cart" className="go-to-cart" aria-label="עגלת קניות" />
-            </Link>
-          }
         </div>
       </CartProvider>
     );

@@ -219,18 +219,13 @@ const IndexPage = () => {
               text-shadow: 0 0 2px black;
             }
 
-            #layout .pusher .nav-bar {
-              background: transparent !important;
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              z-index: 1;
-            }
+            // #layout .nav-bar {
+            //   background: transparent !important;
+            // }
 
-            .nav-bar .icon, .nav-bar .shop-name a {
-              color: var(--main-color)
-            }
+            // .nav-bar .icon, .nav-bar .shop-name a {
+            //   color: var(--main-color)
+            // }
 
             .home-browser h1 {
               font-size: 48px;

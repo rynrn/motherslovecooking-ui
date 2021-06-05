@@ -71,7 +71,9 @@ const ProductDetails = ({ name, price, images, id,
             disableSwipe={!isOnLine}
           /> */}
           <img className="the-image" src={firstImage} alt={name} />
-          {otherImages.map(img => <img className="small-image" src={img} alt={name} />)}
+          <div className="other-product-images">
+            {otherImages.map((img, i) => <img key={i} className="small-image" src={img} alt={name} />)}
+          </div>
         </div>
         <div className="product-details__content">
           <div>
