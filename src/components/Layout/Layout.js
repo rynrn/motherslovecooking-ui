@@ -1,17 +1,16 @@
 import React, { useState } from "react"
 import {
-  BrowserView,
-  MobileView,
-  isMobile,
   isBrowser
 } from "react-device-detect";
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Button } from 'semantic-ui-react';
 import Footer from "../Footer/index"
-import MobileMenu from "./MobileMenu"
 import BrowserMenu from "./BrowserMenu"
 import { CartProvider } from "../../context/cart"
+import { Sidebar } from 'semantic-ui-react';
+import SideMenu from '../../components/SideMenu/SideMenu';
+import NavBar from "../NavBar/index"
 import "../../styles/global.css"
 
 const Layout = ({ children }) => {
@@ -40,10 +39,17 @@ const Layout = ({ children }) => {
     );
   }
   else {
+    const [isMenuOpen, setMenu] = useState(false);
     return (
       <CartProvider>
         <div id="layout" className="is-mobile" style={{ height: '100%' }}>
-          <MobileMenu title={data.site.siteMetadata.title}>{children}</MobileMenu>
+          <Sidebar.Pushable>
+            <SideMenu isVisible={isMenuOpen} closeMenu={() => setMenu(false)} />
+            <Sidebar.Pusher dimmed={isMenuOpen} onClick={() => isMenuOpen && setMenu(false)}>
+              <NavBar title={data.site.siteMetadata.title} openMenu={() => setMenu(true)} />
+              {children}
+            </Sidebar.Pusher>
+          </Sidebar.Pushable>
           <Footer />
           {!isCartPage &&
             <Link to="/cart">
