@@ -34,8 +34,12 @@ const Layout = ({ children }) => {
         {!isBrowser &&
           <MobileMenu title={data.site.siteMetadata.title}>{children}</MobileMenu>
         }
-        {isBrowser && <BrowserMenu title={data.site.siteMetadata.title} />}
-        {children}
+        {isBrowser &&
+          <>
+            <BrowserMenu title={data.site.siteMetadata.title} />
+            {children}
+          </>
+        }
         <Footer />
         {!isCartPage && isMobile &&
           <Link to="/cart">
