@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
-  isBrowser
+  deviceDetect
 } from "react-device-detect";
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, Link } from "gatsby"
@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
     }
   `)
 
-  if (isBrowser) {
+  if (deviceDetect().isBrowser) {
     return (
       <CartProvider>
         <div id="layout" className="is-browser" style={{ height: '100%' }}>
