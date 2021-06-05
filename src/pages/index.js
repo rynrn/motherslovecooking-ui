@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { isBrowser } from "react-device-detect";
 import { Divider, Grid, Container } from 'semantic-ui-react';
+import useDeviceDetect from '../hooks/device-detect';
 import ImageGallery from 'react-image-gallery';
 import ImageGridColumnCard from '../components/ImageCard/ImageGridColumnCard';
 import ContactForm from '../components/ContactForm/ContactForm';
@@ -37,6 +38,8 @@ const heroText = (index) => {
 
 const IndexPage = () => {
   usePageview();
+
+  const { isMobile } = useDeviceDetect();
 
   const data = useStaticQuery(graphql`
     query IndexPageQuery {
@@ -207,7 +210,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="בישול ביתי של אמא עם משלוח עד הבית"
         description="מבשלת אוכל ביתי לאנשים שאוהבים לאכול. אוכל לסופי שבוע ואמצע שבוע בשליחות עד אליך" />
-      <div className={isBrowser ? 'home-browser' : 'home-mobile'} style={{ height: '100%' }}>
+      <div className={!isMobile ? 'home-browser' : 'home-mobile'} style={{ height: '100%' }}>
         <style>{`
             #browser-menu {
               background: transparent;
@@ -218,14 +221,6 @@ const IndexPage = () => {
               color: #fff;
               text-shadow: 0 0 2px black;
             }
-
-            // #layout .nav-bar {
-            //   background: transparent !important;
-            // }
-
-            // .nav-bar .icon, .nav-bar .shop-name a {
-            //   color: var(--main-color)
-            // }
 
             .home-browser h1 {
               font-size: 48px;

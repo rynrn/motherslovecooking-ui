@@ -71,13 +71,6 @@ const NavBar = ({ title, openMenu, isMenuOpen }) => {
             </Icon.Group>
           </Menu.Item>
         </Menu.Item>
-        <Menu.Item position="right" className="shop-name" fitted>
-          {!isSearchVisible &&
-            <Link to="/">
-              {title}
-            </Link>
-          }
-        </Menu.Item>
         <Menu.Item position="right" onClick={openMenu} fitted>
           <Icon name="content" size="large" onClick={openMenu} className="hamburger shop-icon" />
         </Menu.Item>
