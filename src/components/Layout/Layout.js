@@ -31,13 +31,11 @@ const Layout = ({ children }) => {
   return (
     <CartProvider>
       <div id="layout" className={isBrowser ? 'is-browser' : 'is-mobile'} style={{ height: '100%' }}>
-        <MobileView>
+        {!isBrowser &&
           <MobileMenu title={data.site.siteMetadata.title}>{children}</MobileMenu>
-        </MobileView>
-        <BrowserView>
-          <BrowserMenu title={data.site.siteMetadata.title} />
-          {children}
-        </BrowserView>
+        }
+        {isBrowser && <BrowserMenu title={data.site.siteMetadata.title} />}
+        {children}
         <Footer />
         {!isCartPage && isMobile &&
           <Link to="/cart">
