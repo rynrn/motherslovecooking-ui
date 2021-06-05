@@ -14,6 +14,7 @@ const MobileMenu = ({ children, title }) => {
         {children}
       </Sidebar.Pusher>
     </Sidebar.Pushable>
+
   )
 }
 

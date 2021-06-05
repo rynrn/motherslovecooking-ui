@@ -30,11 +30,11 @@ const Layout = ({ children }) => {
 
   return (
     <CartProvider>
-      <div id="layout" className={isBrowser ? 'is-browser' : 'is-mobile'} style={{ height: '100%' }}>
-        {!isBrowser &&
+      <div id="layout" className={false ? 'is-browser' : 'is-mobile'} style={{ height: '100%' }}>
+        {true &&
           <MobileMenu title={data.site.siteMetadata.title}>{children}</MobileMenu>
         }
-        {isBrowser &&
+        {false &&
           <>
             <BrowserMenu title={data.site.siteMetadata.title} />
             {children}
