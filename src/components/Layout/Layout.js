@@ -3,6 +3,7 @@ import {
   deviceDetect
 } from "react-device-detect";
 import PropTypes from "prop-types"
+import useDeviceDetect from "../../hooks/device-detect"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Button } from 'semantic-ui-react';
 import Footer from "../Footer/index"
@@ -16,6 +17,7 @@ import "../../styles/global.css"
 const Layout = ({ children }) => {
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
   const isCartPage = pathname === '/cart';
+  const { isMobile } = useDeviceDetect();
 
   const data = useStaticQuery(graphql`
     query LayoutSiteTitleQuery {
@@ -27,7 +29,7 @@ const Layout = ({ children }) => {
     }
   `)
 
-  if (deviceDetect().isBrowser) {
+  if (!isMobile) {
     return (
       <CartProvider>
         <div id="layout" className="is-browser" style={{ height: '100%' }}>
