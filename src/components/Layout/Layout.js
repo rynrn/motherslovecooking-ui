@@ -28,27 +28,32 @@ const Layout = ({ children }) => {
     }
   `)
 
-  return (
-    <CartProvider>
-      <div id="layout" className={false ? 'is-browser' : 'is-mobile'} style={{ height: '100%' }}>
-        {true &&
+  if (isBrowser) {
+    return (
+      <CartProvider>
+        <div id="layout" className="is-browser" style={{ height: '100%' }}>
+          <BrowserMenu title={data.site.siteMetadata.title} />
+          {children}
+          <Footer />
+        </div>
+      </CartProvider>
+    );
+  }
+  else {
+    return (
+      <CartProvider>
+        <div id="layout" className="is-mobile" style={{ height: '100%' }}>
           <MobileMenu title={data.site.siteMetadata.title}>{children}</MobileMenu>
-        }
-        {false &&
-          <>
-            <BrowserMenu title={data.site.siteMetadata.title} />
-            {children}
-          </>
-        }
-        <Footer />
-        {!isCartPage && isMobile &&
-          <Link to="/cart">
-            <Button circular icon="cart" className="go-to-cart" aria-label="עגלת קניות" />
-          </Link>
-        }
-      </div>
-    </CartProvider>
-  )
+          <Footer />
+          {!isCartPage &&
+            <Link to="/cart">
+              <Button circular icon="cart" className="go-to-cart" aria-label="עגלת קניות" />
+            </Link>
+          }
+        </div>
+      </CartProvider>
+    );
+  }
 }
 
 Layout.propTypes = {

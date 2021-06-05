@@ -270,7 +270,7 @@ const IndexPage = () => {
                 font-size: 18px;
               }
 
-              .image-gallery-slide .image-gallery-description {
+              #layout:not(.is-mobile) .image-gallery-slide .image-gallery-description {
                 bottom: 50%;
               }
             }
@@ -279,6 +279,10 @@ const IndexPage = () => {
               .image-gallery-slide .image-gallery-description {
                 bottom: 35%;
               }
+            }
+
+            #layout.is-mobile .image-gallery-slide .image-gallery-description {
+              bottom: 31%;
             }
           `}</style>
         <ImageGallery items={hero}
