@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react"
-import {
-  deviceDetect
-} from "react-device-detect";
 import PropTypes from "prop-types"
 import useDeviceDetect from "../../hooks/device-detect"
 import { useStaticQuery, graphql, Link } from "gatsby"

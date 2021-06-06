@@ -213,7 +213,7 @@ const IndexPage = () => {
       <div className={!isMobile ? 'home-browser' : 'home-mobile'} style={{ height: '100%' }}>
         <style>{`
             #browser-menu {
-              background: transparent;
+              // background: transparent;
               position: absolute;
             }
             #browser-menu .ui.text.menu .item,
