@@ -5,7 +5,7 @@ import { storage } from "../services/local-storage.service"
 const initialState = {
   products: {},
   total: 0,
-  minimumTotal: 250,
+  minimumTotal: 249,
   totalProductsQuantity: 0
 };
 
