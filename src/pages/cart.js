@@ -29,10 +29,10 @@ const CartPage = () => {
         keywords="סל קניות, מאמא באהבה, משלוחים עד הבית, הזמנה באתר"
         description="כל המוצרים שבחרת להזמין באתר, משלמים ומקבלים מתי שבוחרים, טעים, טרי והכי חשוב כיף" />
       <Header as="h1" textAlign="center">סל הקניות שלי</Header>
-      <div>
+      <div style="text-align: center">
         האתר סגור להזמנות
       </div>
-      <div>
+      <div style="text-align: center">
         אין אפשרות לבצע הזמנות
       </div>
       {/* <CartProductContainer placeholder={data.placeholder} currency={data.site.siteMetadata.currency} /> */}
